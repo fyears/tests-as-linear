@@ -12,7 +12,7 @@
 
 
 
-<title>Common statistical tests are linear models (or: how to teach stats)</title>
+<title>常见的统计检验是线性模型（或：如何教导统计学）</title>
 
 <script src="index_files/jquery-1.12.4/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -273,7 +273,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Common statistical tests are linear models (or: how to teach stats)</h1>
+<h1 class="title toc-ignore">常见的统计检验是线性模型（或：如何教导统计学）</h1>
 
 </div>
 
@@ -282,7 +282,7 @@ div.tocify {
 <!-- From https://stackoverflow.com/a/37839683/1297830 -->
 <link rel="stylesheet" type="text/css" href="include/hideOutput.css">
 <script src="include/hideOutput.js"></script>
-<p>By Jonas Kristoffer Lindeløv (<a href="https://lindeloev.net">blog</a>, <a href="http://personprofil.aau.dk/117060">profile</a>).<br /> Last updated: 29 August, 2019 (See <a href="https://github.com/lindeloev/tests-as-linear/commits/master">changelog</a>).<br /> Check out the <a href="https://eigenfoo.xyz/tests-as-linear/">Python version</a> and the <a href="https://twitter.com/jonaslindeloev/status/1110907133833502721">Twitter summary</a>.</p>
+<p>作者：Jonas Kristoffer Lindeløv (<a href="https://lindeloev.net">博客</a>, <a href="http://personprofil.aau.dk/117060">个人主页</a>).<br /> 最后更新日期：30 August, 2019 (见 <a href="https://github.com/lindeloev/tests-as-linear/commits/master">更新日志</a>)。<br /> 可查阅<a href="https://eigenfoo.xyz/tests-as-linear/">Python 版本</a> 和 <a href="https://twitter.com/jonaslindeloev/status/1110907133833502721">Twitter 概况</a>.</p>
 <!-- Social sharing. From simplesharebuttons.com -->
 <style type="text/css">
   #share-buttons img {
@@ -300,25 +300,25 @@ div.tocify {
 <p><a href="https://twitter.com/intent/tweet?text=Common%20statistical%20tests%20are%20linear%20models%20(or:%20how%20to%20teach%20stats)%20https%3A%2F%2Flindeloev.github.io%2Ftests-as-linear%20via%20%40jonaslindeloev" class="twitter-hashtag-button" data-size="large" data-related="jonaslindeloev" data-show-count="false">Share on Twitter</a>    <!-- Facebook --><a href="http://www.facebook.com/sharer.php?u=https://lindeloev.github.io/tests-as-linear/" target="_blank"><img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" /></a><!-- LinkedIn --><a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://lindeloev.github.io/tests-as-linear/" target="_blank"><img src="https://simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" /></a><!-- Digg --><a href="http://www.digg.com/submit?url=https://lindeloev.github.io/tests-as-linear/" target="_blank"><img src="https://simplesharebuttons.com/images/somacro/diggit.png" alt="Digg" /></a><!-- Reddit --><a href="http://reddit.com/submit?url=https://lindeloev.github.io/tests-as-linear/&amp;title=Common statistical tests are linear models (or: how to teach stats)" target="_blank"><img src="https://simplesharebuttons.com/images/somacro/reddit.png" alt="Reddit" /></a><!-- Email --><a href="mailto:?Subject=Common statistical tests are linear models (or: how to teach stats)&amp;Body=https://lindeloev.github.io/tests-as-linear/"><img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" /></a></p>
 </div>
 <p><br /></p>
-<p>This document is summarised in the table below. It shows the linear models underlying common parametric and “non-parametric” tests. Formulating all the tests in the same language highlights the many similarities between them. Get it <a href="linear_tests_cheat_sheet.png">as an image</a> or <a href="linear_tests_cheat_sheet.pdf">as a PDF</a>.</p>
+<p>此文档整理如下表。它展示了在常见的参数和“非参”检验之下的线性模型。在同一个框架下展示所有检验，表达出了它们之间的许多相似之处。获得<a href="linear_tests_cheat_sheet.png">图片版本</a>或 <a href="linear_tests_cheat_sheet.pdf">PDF 版本</a>。</p>
 <hr />
 <p><a href="linear_tests_cheat_sheet.pdf"><img src="linear_tests_cheat_sheet.png" /></a></p>
 <hr />
-<div id="the-simplicity-underlying-common-tests" class="section level1">
-<h1><span class="header-section-number">1</span> The simplicity underlying common tests</h1>
-<p>Most of the common statistical models (t-test, correlation, ANOVA; chi-square, etc.) are special cases of linear models or a very close approximation. This beautiful simplicity means that there is less to learn. In particular, it all comes down to <span class="math inline">\(y = a \cdot x + b\)</span> which most students know from highschool. Unfortunately, stats intro courses are usually taught as if each test is an independent tool, needlessly making life more complicated for students and teachers alike.</p>
-<p>This needless complexity multiplies when students try to rote learn the parametric assumptions underlying each test separately rather than deducing them from the linear model.</p>
-<p>For this reason, I think that teaching linear models first and foremost and <em>then</em> name-dropping the special cases along the way makes for an excellent teaching strategy, emphasizing <em>understanding</em> over rote learning. Since linear models are the same across frequentist, Bayesian, and permutation-based inferences, I’d argue that it’s better to start with modeling than p-values, type-1 errors, Bayes factors, or other inferences.</p>
-<p>Concerning the teaching of <em>“non-parametric”</em> tests in intro-courses, I think that we can justify <a href="https://en.wikipedia.org/wiki/Lie-to-children">lying-to-children</a> and teach “non-parametric”" tests as if they are merely ranked versions of the corresponding parametric tests. It is much better for students to think “ranks!” than to believe that you can magically throw away assumptions. Indeed, the Bayesian equivalents of “non-parametric”" tests implemented in <a href="https://jasp-stats.org">JASP</a> <a href="https://arxiv.org/abs/1712.06941">literally just do (latent) ranking</a> and that’s it. For the frequentist “non-parametric”" tests considered here, this approach is highly accurate for N &gt; 15.</p>
+<div id="section" class="section level1">
+<h1><span class="header-section-number">1</span> 常见检验的简洁本质</h1>
+<p>大部分常见统计模型（t 检验、相关性、方差分析（ANOVA）、卡方，等等）都是线性模型的特殊形式，或者是很接近的近似行是。这漂亮的简洁性，意味着我们需要学习更少东西。特别地，这都来源于大部分学生从高中就学习的模型：<span class="math inline">\(y = a \cdot x + b\)</span>。不幸地，统计入门课程通常把各种检验教导魏独立的工具，更不要提它们对学生和教师生活所增加的复杂性了。</p>
+<p>当学生想分别学习每一个检验背后的参数假设的时候，相比于从线性模型进行推导，教材里多余的复杂性变得更为复杂。</p>
+<p>因此，我认为，先教导线性模型和扩展，<em>然后</em> 对于一些特殊形式进行“改名”，这种方式是一种优秀的教导策略，并且有助于更深刻地 <em>理解</em> 假设检验。因为线性模型在频率学派、贝叶斯学派、基于置换的推断之间，都是相同的。我认为从模型开始，比从 p 值、第 1 类错误、贝叶斯因子、或其它东西开始，更为友好。</p>
+<p>当考虑到在入门课程教授 <em>“非参”</em> 检验的时候，我认为我们可以修改“<a href="https://en.wikipedia.org/wiki/Lie-to-children">向儿童欺骗</a>”，并且教导学生“非参”检验其实就是和秩相关的参数检验。对学生来说，思考“秩！”，更优于相信你可以魔术般地扔掉各种假设。实际上，在 <a href="https://jasp-stats.org/">JASP</a> 里，“非参”检验的贝叶斯等价模型，确实<a href="https://arxiv.org/abs/1712.06941">就是使用（隐）秩</a>来实现的。这里讨论的频率学派的“非参”检验，对于 N &gt; 15 的情况来说非常精确。</p>
 <center>
 <img src="https://www.picsellmedia.com/wp-content/uploads/2017/01/shutterstock_336913772.jpg" />
 </center>
 <p><br /></p>
-<p>Use the menu to jump to your favourite section. There are links to lots of similar (though more scattered) stuff under <a href="#links">sources</a> and <a href="#course">teaching materials</a>. I hope that you will join in suggesting improvements or submitting improvements yourself in <a href="https://github.com/lindeloev/tests-as-linear">the Github repo to this page</a>. Let’s make it awesome!</p>
+<p>使用导航栏来跳转到你最喜欢的章节。在<a href="#links">来源</a>和<a href="#course">教材</a>两章，有很多类似（尽管更为散乱）的材料。我希望你们可以一起来提供优化建议，或者直接在<a href="https://github.com/lindeloev/tests-as-linear">Github</a>提交修改。让我们一起来使本文章变得更棒！</p>
 </div>
-<div id="settings-and-toy-data" class="section level1">
-<h1><span class="header-section-number">2</span> Settings and toy data</h1>
-Unfold this if you want to see functions and other settings for this notebook:
+<div id="section-1" class="section level1">
+<h1><span class="header-section-number">2</span> 设置和示例数据</h1>
+<p>如果你想查看函数和本笔记的其它设置的话，可以展开这片代码查看：</p>
 <div class="fold s">
 <pre class="r"><code># Load packages for data handling and plotting
 library(tidyverse)
@@ -368,7 +368,7 @@ theme_axis = function(P,
   }
 }</code></pre>
 </div>
-<p>For a start, we’ll keep it simple and play with three standard normals in wide (<code>a</code>, <code>b</code>, <code>c</code>) and long format (<code>value</code>, <code>group</code>):</p>
+<p>作为开始，我们保持简单，使用三组正态分布数据，且整理为宽（<code>a</code>、<code>b</code>、<code>c</code>）和长（<code>value</code>、<code>group</code>）格式：</p>
 <pre class="r"><code># Wide format (sort of)
 #y = rnorm_fixed(50, mu=0.3, sd=2)  # Almost zero mean.
 y = c(rnorm(15), exp(rnorm(15)), runif(20, min = -3, max = 0))  # Almost zero mean, not normal
@@ -380,13 +380,13 @@ value = c(y, y2)
 group = rep(c(&#39;y1&#39;, &#39;y2&#39;), each = 50)</code></pre>
 </div>
 <div id="correlation" class="section level1">
-<h1><span class="header-section-number">3</span> Pearson and Spearman correlation</h1>
-<div id="theory-as-linear-models" class="section level3">
-<h3><span class="header-section-number">3.0.1</span> Theory: As linear models</h3>
-<p>Model: the recipe for <span class="math inline">\(y\)</span> is a slope (<span class="math inline">\(\beta_1\)</span>) times <span class="math inline">\(x\)</span> plus an intercept (<span class="math inline">\(\beta_0\)</span>, aka a straight line).</p>
+<h1><span class="header-section-number">3</span> Pearson 相关性和 Spearman 相关性</h1>
+<div id="section-2" class="section level3">
+<h3><span class="header-section-number">3.0.1</span> 理论：作为线性模型</h3>
+<p>模型：<span class="math inline">\(y\)</span> 的形式是一个斜率（<span class="math inline">\(\beta_1\)</span>）乘以 <span class="math inline">\(x\)</span> 加上一个截距（<span class="math inline">\(\beta_0\)</span>，也就是一条直线）。</p>
 <p><span class="math inline">\(y = \beta_0 + \beta_1 x \qquad \mathcal{H}_0: \beta_1 = 0\)</span></p>
-<p>… which is a math-y way of writing the good old <span class="math inline">\(y = ax + b\)</span> (here ordered as <span class="math inline">\(y = b + ax\)</span>). In R we are lazy and write <code>y ~ 1 + x</code> which R reads like <code>y = 1*number + x*othernumber</code> and the task of t-tests, lm, etc., is simply to find the numbers that best predict <span class="math inline">\(y\)</span>.</p>
-<p>Either way you write it, it’s an intercept (<span class="math inline">\(\beta_0\)</span>) and a slope (<span class="math inline">\(\beta_1\)</span>) yielding a straight line:</p>
+<p>以上模型，实际上是我们熟悉的旧公式 <span class="math inline">\(y = ax + b\)</span> （这里书写顺序变为 <span class="math inline">\(y = b + ax\)</span>）的一个“更数学的”表达。R 里面，我们比较懒，所以写成了 <code>y ~ 1 + x</code>，R 对此理解为 <code>y = 1*数 + x*另一个数</code>，而且，t 检验，线性回归，等等……，都只是去寻找能够最好地预测 <span class="math inline">\(y\)</span> 的数字。</p>
+<p>无论你怎么书写，截距（<span class="math inline">\(\beta_0\)</span>）和斜率（<span class="math inline">\(\beta_1\)</span>）都产生了一条直线：</p>
 <div class="fold s">
 <pre class="r"><code># Fixed correlation
 D_correlation = data.frame(MASS::mvrnorm(30, mu = c(0.9, 0.9), Sigma = matrix(c(1, 0.8, 1, 0.8), ncol = 2), empirical = TRUE))  # Correlated data
@@ -409,11 +409,11 @@ P_pearson = ggplot(D_correlation, aes(x=X1*0.5+0.2, y=X2*0.5+0.4)) +
 theme_axis(P_pearson, legend.position = c(0.4, 0.9))</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
-<p>This is often simply called a <strong>regression</strong> model which can be extended to <strong>multiple regression</strong> where there are several <span class="math inline">\(\beta\)</span>s and on the right-hand side multiplied with the predictors. Everything below, from <a href="#t1">one-sample t-test</a> to <a href="#anova2">two-way ANOVA</a> are just special cases of this system. Nothing more, nothing less.</p>
-<p>As the name implies, the <strong>Spearman rank correlation</strong> is a <strong>Pearson correlation</strong> on rank-transformed <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>:</p>
+<p>这通常被称为 <strong>回归</strong> 模型，而且当右边有多个 <span class="math inline">\(\beta\)</span> 和自变量相乘的时候，它被扩展为 <strong>多元回归</strong>。以下的所有模型，从<a href="#t1">单样本 t 检验</a>到<a href="#anova2">双因素方差分析</a>，都只是这个设定下的特殊形式。不多不少。</p>
+<p>正如它名字所示意的，<strong>Spearman 秩相关系数</strong> 就是 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(y\)</span> 的秩变换后的 <strong>Pearson 相关系数</strong>：</p>
 <p><span class="math inline">\(rank(y) = \beta_0 + \beta_1 \cdot rank(x) \qquad \mathcal{H}_0: \beta_1 = 0\)</span></p>
-<p>I’ll introduce <a href="#rank">ranks</a> in a minute. For now, notice that the correlation coefficient of the linear model is identical to a “real” Pearson correlation, but p-values are an approximation which is is <a href="simulations/simulate_spearman.html">appropriate for samples greater than N=10 and almost perfect when N &gt; 20</a>.</p>
-<p>Such a nice and non-mysterious equivalence that many students are left unaware of! Visualizing them side by side including data labels, we see this rank-transformation in action:</p>
+<p>很快我就会介绍<a href="#rank">秩</a>这一个概念。现在，注意到线性模型的相关系数就是等价于“真正的” Pearson 相关系数，但是 p 值是近似值，<a href="simulations/simulate_spearman.html">这个近似值适用于 N&gt;10，并且在 N &gt; 20 的情况下差别极少</a>。</p>
+<p>很多学生都没有意识到这么漂亮和神奇的等价关系！对它们带上数据标签来可视化，我们可立刻看到这一秩转换过程：</p>
 <div class="fold s">
 <pre class="r"><code># Spearman intercept
 intercept_spearman = coefficients(lm(rank(X2) ~ rank(X1), D_correlation))[1]
@@ -433,19 +433,19 @@ P_spearman = ggplot(D_correlation, aes(x=rank(X1), y=rank(X2))) +
 </div>
 </div>
 <div id="rank" class="section level3">
-<h3><span class="header-section-number">3.0.2</span> Theory: rank-transformation</h3>
-<p><code>rank</code> simply takes a list of numbers and “replace” them with the integers of their rank (1st smallest, 2nd smallest, 3rd smallest, etc.). So the result of the rank-transformation <code>rank(c(3.6, 3.4, -5.0, 8.2))</code> is <code>3, 2, 1, 4</code>. See that in the figure above?</p>
-<p>A <em>signed</em> rank is the same, just where we rank according to absolute size first and then add in the sign second. So the signed rank here would be <code>2, 1, -3, 4</code>. Or in code:</p>
+<h3><span class="header-section-number">3.0.2</span> 理论：秩转换</h3>
+<p><code>秩（rank）</code>意思是对于一串数字，使用它们的排序号来“替换”它们（第 1 最小的，第 2 最小的，第 3 最小的，……）。因此 <code>rank(c(3.6, 3.4, -5.0, 8.2))</code> 的秩转换结果是 <code>3, 2, 1, 4</code>。见到以上图像了吗？</p>
+<p>“符号”秩是相同的，除了我们先根据绝对值排序，再添加上符号。所以以上的符号秩是 <code>2, 1, -3, 4</code>。或者用代码表达：</p>
 <pre class="r"><code>signed_rank = function(x) sign(x) * rank(abs(x))</code></pre>
-<p>I hope I don’t offend anyone when I say that ranks are easy; yet it’s all you need to do to convert most parametric tests into their “non-parametric” counterparts! One interesting implication is that <em>many “non-parametric tests” are about as parametric as their parametric counterparts with means, standard deviations, homogeneity of variance, etc. - just on rank-transformed data</em>. That’s why I put “non-parametric” in quotation marks.</p>
+<p>我希望我说秩很容易理解的时候没有得罪任何人；然而，这就是你转换大部分参数检验到它们的对应“非参”检验所要做的所有事情！一个重要的推论是，<em>很多“非参”检验和它们的对应参数检验版本都有一致的参数：均值、标准差、方差齐次性，等等 —- 区别在于它们是在秩转换后的数据上计算的</em>。这是为什么我把“非参”用引号包起来。</p>
 </div>
-<div id="r-code-pearson-correlation" class="section level3">
-<h3><span class="header-section-number">3.0.3</span> R code: Pearson correlation</h3>
-<p>It couldn’t be much simpler to run these models in R. They yield identical <code>p</code> and <code>t</code>, but there’s a catch: <code>lm</code> gives you the <em>slope</em> and even though that is usually much more interpretable and informative than the <em>correlation coefficient</em> <em>r</em>, you may still want <em>r</em>. Luckily, the slope becomes <code>r</code> if <code>x</code> and <code>y</code> have identical standard deviations. For now, we will use <code>scale(x)</code> to make <span class="math inline">\(SD(x) = 1.0\)</span> and <span class="math inline">\(SD(y) = 1.0\)</span>:</p>
+<div id="r-pearson-" class="section level3">
+<h3><span class="header-section-number">3.0.3</span> R 代码：Pearson 相关系数</h3>
+<p>在 R 里运行这些模型再容易不过了。它们产生相同的 <code>p</code> 和 <code>t</code>，但是这里有个问题：<code>lm</code> 返回 <em>斜率</em>，尽管它通常比 <em>相关系数</em> <em>r</em> 更容易理解和反映了更多信息，你依然想得到 <em>r</em> 值。幸运地，如果 <code>x</code> 和 <code>y</code> 有相同的标准差，斜率就会变成 <code>r</code>。现在，我们使用 <code>scale(x)</code> 使得 <span class="math inline">\(SD(x) = 1.0\)</span> and <span class="math inline">\(SD(y) = 1.0\)</span>：</p>
 <pre class="r"><code>a = cor.test(y, x, method = &quot;pearson&quot;) # Built-in
 b = lm(y ~ 1 + x) # Equivalent linear model: y = Beta0*1 + Beta1*x
 c = lm(scale(y) ~ 1 + scale(x))  # On scaled vars to recover r</code></pre>
-Results: <div id="htmlwidget-2770309300d4eee48ade" style="width:100%;height:auto;" class="datatables html-widget"></div>
+结果： <div id="htmlwidget-2770309300d4eee48ade" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-2770309300d4eee48ade">{"x":{"filter":"none","data":[["cor.test","lm scaled","lm"],[0.738,0.738,0.738],[-0.3365,-0.3365,-0.3365],[-0.0485,-0.0485,-0.0872],[-0.3225,-0.3384,-0.6081],[0.233,0.2414,0.4337]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>model<\/th>\n      <th>p.value<\/th>\n      <th>t<\/th>\n      <th>r<\/th>\n      <th>conf.low<\/th>\n      <th>conf.high<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"lengthChange":false,"ordering":false,"autoWidth":true,"bPaginate":false,"bInfo":false,"paging":false,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5]}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <div class="fold o">
 <pre><code>## 
@@ -494,16 +494,16 @@ Results: <div id="htmlwidget-2770309300d4eee48ade" style="width:100%;height:auto
 ## Multiple R-squared:  0.002354,   Adjusted R-squared:  -0.01843 
 ## F-statistic: 0.1132 on 1 and 48 DF,  p-value: 0.738</code></pre>
 </div>
-<p>The CIs are not exactly identical, but very close.</p>
+<p>置信区间没有完全一致，但是非常相近。</p>
 </div>
-<div id="r-code-spearman-correlation" class="section level3">
-<h3><span class="header-section-number">3.0.4</span> R code: Spearman correlation</h3>
-<p>Note that we can interpret the slope which is the number of ranks <span class="math inline">\(y\)</span> change for each rank on <span class="math inline">\(x\)</span>. I think that this is a pretty interesting number. However, the intercept is less interpretable since it lies at <span class="math inline">\(rank(x) = 0\)</span> which is impossible since x starts at 1.</p>
-<p>See the identical <code>r</code> (now “rho”) and <code>p</code>:</p>
+<div id="r-spearman-" class="section level3">
+<h3><span class="header-section-number">3.0.4</span> R 代码：Spearman 相关系数</h3>
+<p>注意，我们可以把斜率解释为：对于每一 <span class="math inline">\(x\)</span> 的秩的变化，所获得的相应 <span class="math inline">\(y\)</span> 的秩的变化。我认为这个数字非常有趣。然而，截距更难解释，因为它定义在 <span class="math inline">\(rank(x) = 0\)</span> 的时候，然而这不可能，因为 x 是从 1 开始的。</p>
+<p>查看相同的 <code>r</code> (now “rho”) 和 <code>p</code>：</p>
 <pre class="r"><code># Spearman correlation
 a = cor.test(y, x, method = &quot;spearman&quot;) # Built-in
 b = lm(rank(y) ~ 1 + rank(x)) # Equivalent linear model</code></pre>
-Let’s look at the results: <div id="htmlwidget-ec3f822c7ae920e3f540" style="width:100%;height:auto;" class="datatables html-widget"></div>
+让我们看一下结果： <div id="htmlwidget-ec3f822c7ae920e3f540" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-ec3f822c7ae920e3f540">{"x":{"filter":"none","data":[["cor.test","lm"],[0.7072,0.708],[-0.0543,-0.0543]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>model<\/th>\n      <th>p.value<\/th>\n      <th>rho<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"lengthChange":false,"ordering":false,"autoWidth":true,"bPaginate":false,"bInfo":false,"paging":false,"columnDefs":[{"className":"dt-right","targets":[1,2]}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <div class="fold o">
 <pre><code>## 
@@ -537,18 +537,18 @@ Let’s look at the results: <div id="htmlwidget-ec3f822c7ae920e3f540" style="wi
 </div>
 </div>
 </div>
-<div id="one-mean" class="section level1">
-<h1><span class="header-section-number">4</span> One mean</h1>
+<div id="section-3" class="section level1">
+<h1><span class="header-section-number">4</span> 单均值</h1>
 <div id="t1" class="section level2">
-<h2><span class="header-section-number">4.1</span> One sample t-test and Wilcoxon signed-rank</h2>
-<div id="theory-as-linear-models-1" class="section level3">
-<h3><span class="header-section-number">4.1.1</span> Theory: As linear models</h3>
-<p><strong>t-test</strong> model: A single number predicts <span class="math inline">\(y\)</span>.</p>
+<h2><span class="header-section-number">4.1</span> 单样本 t 检验和 Wilcoxon 符号秩检验</h2>
+<div id="section-4" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> 理论：作为线性模型</h3>
+<p><strong>t 检验</strong> 模型：单独一个数字来预测 <span class="math inline">\(y\)</span>。</p>
 <p><span class="math inline">\(y = \beta_0 \qquad \mathcal{H}_0: \beta_0 = 0\)</span></p>
-<p>In other words, it’s our good old <span class="math inline">\(y = \beta_0 + \beta_1*x\)</span> where the last term is gone since there is no <span class="math inline">\(x\)</span> (essentially <span class="math inline">\(x=0\)</span>, see left figure below).</p>
-<p>The same is to a very close approximately true for <strong>Wilcoxon signed-rank test</strong>, just with the <a href="#rank">signed ranks</a> of <span class="math inline">\(y\)</span> instead of <span class="math inline">\(y\)</span> itself (see right panel below).</p>
+<p>换句话说，这是我们所熟悉的 <span class="math inline">\(y = \beta_0 + \beta_1*x\)</span>，其中最后一项消失了，因为 <span class="math inline">\(x\)</span> 不存在了（等价地，<span class="math inline">\(x=0\)</span>。见下方左图）。</p>
+<p>以上模型，一旦用 <span class="math inline">\(y\)</span> 的<a href="#rank">符号秩</a>来替换了 <span class="math inline">\(y\)</span> 本身（见下方右图），就和 <strong>Wilcoxon 符号秩检验</strong> 非常相近。</p>
 <p><span class="math inline">\(signed\_rank(y) = \beta_0\)</span></p>
-<p><a href="simulations/simulate_wilcoxon.html">This approximation is good enough when the sample size is larger than 14 and almost perfect if the sample size is larger than 50</a>.</p>
+<p><a href="simulations/simulate_wilcoxon.html">这个近似对于样本量大于 14 的情况已足够好，对于大于 50 的情况下接近完美</a>。</p>
 <div class="fold s">
 <pre class="r"><code># T-test
 D_t1 = data.frame(y = rnorm_fixed(20, 0.5, 0.6),
@@ -578,15 +578,15 @@ theme_axis(P_t1, ylim = c(-1, 2), legend.position = c(0.6, 0.1)) +
 <p><img src="index_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
-<div id="r-code-one-sample-t-test" class="section level3">
-<h3><span class="header-section-number">4.1.2</span> R code: One-sample t-test</h3>
-<p>Try running the R code below and see that the linear model (<code>lm</code>) produces the same <span class="math inline">\(t\)</span>, <span class="math inline">\(p\)</span>, and <span class="math inline">\(r\)</span> as the built-in <code>t.test</code>. The confidence interval is not presented in the output of <code>lm</code> but is also identical if you use <code>confint(lm(...))</code>:</p>
+<div id="r--t-" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> R 代码：单样本 t 检验</h3>
+<p>尝试运行以下 R 代码，确认线性模型（<code>lm</code>）和内置的 <code>t.test</code> 产生相同的 <span class="math inline">\(t\)</span>、<span class="math inline">\(p\)</span>、<span class="math inline">\(r\)</span>。<code>lm</code> 的输出没有置信区间，但是你可以用 <code>confint(lm(...))</code> 来确认结果也是相同的：</p>
 <pre class="r"><code># Built-in t-test
 a = t.test(y)
 
 # Equivalent linear model: intercept-only
 b = lm(y ~ 1)</code></pre>
-<p>Results:</p>
+<p>结果：</p>
 <div id="htmlwidget-f06d5a47f7cab22f5926" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-f06d5a47f7cab22f5926">{"x":{"filter":"none","data":[["t.test","lm"],[-0.0952,-0.0952],[0.7095,0.7095],[-0.3747,-0.3747],[49,49],[-0.6059,-0.6059],[0.4155,0.4155]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>model<\/th>\n      <th>mean<\/th>\n      <th>p.value<\/th>\n      <th>t<\/th>\n      <th>df<\/th>\n      <th>conf.low<\/th>\n      <th>conf.high<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"lengthChange":false,"ordering":false,"autoWidth":true,"bPaginate":false,"bInfo":false,"paging":false,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6]}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <div class="fold o">
@@ -617,9 +617,9 @@ b = lm(y ~ 1)</code></pre>
 ## Residual standard error: 1.797 on 49 degrees of freedom</code></pre>
 </div>
 </div>
-<div id="r-code-wilcoxon-signed-rank-test" class="section level3">
-<h3><span class="header-section-number">4.1.3</span> R code: Wilcoxon signed-rank test</h3>
-<p>In addition to matching <code>p</code>-values, <code>lm</code> also gives us the mean signed rank, which I find to be an informative number.</p>
+<div id="r-wilcoxon-" class="section level3">
+<h3><span class="header-section-number">4.1.3</span> R 代码：Wilcoxon 符号秩检验</h3>
+<p>除了一致的 <code>p</code> 值，<code>lm</code> 也提供了符号秩均值，我发现这个数字非常有信息量。</p>
 <pre class="r"><code># Built-in
 a = wilcox.test(y)
 
@@ -628,7 +628,7 @@ b = lm(signed_rank(y) ~ 1)  # See? Same model as above, just on signed ranks
 
 # Bonus: of course also works for one-sample t-test
 c = t.test(signed_rank(y))</code></pre>
-<p>Results:</p>
+<p>结果：</p>
 <div id="htmlwidget-53cac2b5a19100b40e9d" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-53cac2b5a19100b40e9d">{"x":{"filter":"none","data":[["wilcox.test","lm","t.test"],[0.213,0.2146,0.2146],[null,-5.18,-5.18]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>model<\/th>\n      <th>p.value<\/th>\n      <th>mean_rank<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"lengthChange":false,"ordering":false,"autoWidth":true,"bPaginate":false,"bInfo":false,"paging":false,"columnDefs":[{"className":"dt-right","targets":[1,2]}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <div class="fold o">
@@ -668,12 +668,12 @@ c = t.test(signed_rank(y))</code></pre>
 </div>
 </div>
 <div id="tpair" class="section level2">
-<h2><span class="header-section-number">4.2</span> Paired samples t-test and Wilcoxon matched pairs</h2>
-<div id="theory-as-linear-models-2" class="section level3">
-<h3><span class="header-section-number">4.2.1</span> Theory: As linear models</h3>
-<p><strong>t-test</strong> model: a single number (intercept) predicts the pairwise differences.</p>
+<h2><span class="header-section-number">4.2</span> 配对样本 t 检验和 Wilcoxon 配对组检验</h2>
+<div id="section-5" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> 理论：作为线性模型</h3>
+<p><strong>t 检验</strong>模型：一个数字（截距）来预测组间之差。</p>
 <p><span class="math inline">\(y_2-y_1 = \beta_0 \qquad \mathcal{H}_0: \beta_0 = 0\)</span></p>
-<p>This means that there is just one <span class="math inline">\(y = y_2 - y_1\)</span> to predict and it becomes a <a href="#t1">one-sample t-test</a> on the pairwise differences. The visualization is therefore also the same as for the one-sample t-test. At the risk of overcomplicating a simple substraction, you can think of these pairwise differences as slopes (see left panel of the figure), which we can represent as y-offsets (see right panel of the figure):</p>
+<p>这意味着只有一个 <span class="math inline">\(y = y_2 - y_1\)</span> 需要预测，而且它变成了对于组间之差的<a href="#t1">单样本 t 检验</a>。因此可视化效果和单样本 t 检验是相同的。冒着过度复杂化简单作差的风险，你可以认为这些组间之差是斜率（见图的左半部分），我们也可以用 y 的差来表达（见图的右半部分）：</p>
 <div class="fold s">
 <pre class="r"><code># Data for plot
 N = nrow(D_t1)
@@ -693,14 +693,14 @@ P_tpaired = ggplot(D_tpaired, aes(x = x, y = y)) +
 theme_axis(P_tpaired) + theme_axis(P_t1, legend.position = c(0.6, 0.1))</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
-<p>Similarly, the <strong>Wilcoxon matched pairs</strong> only differ from <strong>Wilcoxon signed-rank</strong> in that it’s testing the signed ranks of the pairwise <span class="math inline">\(y-x\)</span> differences.</p>
+<p>相似地，<strong>Wilcoxon 配对组</strong> 和 <strong>Wilcoxon 符号秩</strong> 的唯一差别，就是它是对配对的 <span class="math inline">\(y-x\)</span> 差的符号秩进行检验。</p>
 <p><span class="math inline">\(signed\_rank(y_2-y_1) = \beta_0 \qquad \mathcal{H}_0: \beta_0 = 0\)</span></p>
 </div>
-<div id="r-code-paired-sample-t-test" class="section level3">
-<h3><span class="header-section-number">4.2.2</span> R code: Paired sample t-test</h3>
+<div id="r--t--1" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> R 代码：配对样本 t 检验</h3>
 <pre class="r"><code>a = t.test(y, y2, paired = TRUE) # Built-in paired t-test
 b = lm(y - y2 ~ 1) # Equivalent linear model</code></pre>
-<p>Results:</p>
+<p>结果：</p>
 <div id="htmlwidget-04f7d8d710633141c191" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-04f7d8d710633141c191">{"x":{"filter":"none","data":[["t.test","lm"],[-0.5952,-0.5952],[0.0934,0.0934],[49,49],[-1.7108,-1.7108],[-1.2944,-1.2944],[0.104,0.104]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>model<\/th>\n      <th>mean<\/th>\n      <th>p.value<\/th>\n      <th>df<\/th>\n      <th>t<\/th>\n      <th>conf.low<\/th>\n      <th>conf.high<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"lengthChange":false,"ordering":false,"autoWidth":true,"bPaginate":false,"bInfo":false,"paging":false,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6]}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <div class="fold o">
@@ -733,9 +733,9 @@ b = lm(y - y2 ~ 1) # Equivalent linear model</code></pre>
 ## Residual standard error: 2.46 on 49 degrees of freedom</code></pre>
 </div>
 </div>
-<div id="r-code-wilcoxon-matched-pairs" class="section level3">
-<h3><span class="header-section-number">4.2.3</span> R code: Wilcoxon matched pairs</h3>
-<p>Again, we do the signed-ranks trick. This is still an approximation, but a close one:</p>
+<div id="r-wilcoxon--1" class="section level3">
+<h3><span class="header-section-number">4.2.3</span> R 代码：Wilcoxon 配对组检验</h3>
+<p>我们再一次运用符号秩转换技巧。这依然是近似值，但是非常接近：</p>
 <pre class="r"><code># Built-in Wilcoxon matched pairs
 a = wilcox.test(y, y2, paired = TRUE)
 
@@ -744,7 +744,7 @@ b = lm(signed_rank(y - y2) ~ 1)
 
 # Bonus: identical to one-sample t-test ong signed ranks
 c = t.test(signed_rank(y - y2))</code></pre>
-<p>Results:</p>
+<p>结果：</p>
 <div id="htmlwidget-425cef58e9452045d63f" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-425cef58e9452045d63f">{"x":{"filter":"none","data":[["wilcox.test","lm","t.test"],[0.0447,0.0429,0.0429],[null,-8.34,-8.34]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>model<\/th>\n      <th>p.value<\/th>\n      <th>mean_rank_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"lengthChange":false,"ordering":false,"autoWidth":true,"bPaginate":false,"bInfo":false,"paging":false,"columnDefs":[{"className":"dt-right","targets":[1,2]}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <div class="fold o">
@@ -783,28 +783,28 @@ c = t.test(signed_rank(y - y2))</code></pre>
 ## mean of x 
 ##     -8.34</code></pre>
 </div>
-<p>For large sample sizes (N &gt;&gt; 100), this approaches the <strong>sign test</strong> to a reasonable degree, but this approximation is too inaccurate to flesh out here.</p>
+<p>对于大样本量（N &gt;&gt; 100），这计算方式某种程度上比较接近 <strong>符号检验</strong>。但是本例子中这种近似效果较差。</p>
 </div>
 </div>
 </div>
-<div id="two-means" class="section level1">
-<h1><span class="header-section-number">5</span> Two means</h1>
+<div id="section-6" class="section level1">
+<h1><span class="header-section-number">5</span> 双均值</h1>
 <div id="t2" class="section level2">
-<h2><span class="header-section-number">5.1</span> Independent t-test and Mann-Whitney U</h2>
-<div id="theory-as-linear-models-3" class="section level3">
-<h3><span class="header-section-number">5.1.1</span> Theory: As linear models</h3>
-<p>Independent t-test model: two means predict <span class="math inline">\(y\)</span>.</p>
+<h2><span class="header-section-number">5.1</span> 独立 t 检验和 Mann-Whitney U 检验</h2>
+<div id="section-7" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> 理论：作为线性模型</h3>
+<p>独立 t 检验模型：两个均值来预测 <span class="math inline">\(y\)</span>。</p>
 <p><span class="math inline">\(y_i = \beta_0 + \beta_1 x_i \qquad \mathcal{H}_0: \beta_1 = 0\)</span></p>
-<p>where <span class="math inline">\(x_i\)</span> is an indicator (0 or 1) saying whether data point <span class="math inline">\(i\)</span> was sampled from one or the other group. <a href="https://en.wikipedia.org/wiki/Dummy_variable_(statistics)">Indicator variables (also called “dummy coding”)</a> underly a lot of linear models and we’ll take an aside to see how it works in a minute.</p>
-<p><strong>Mann-Whitney U</strong> (also known as <strong>Wilcoxon rank-sum test</strong> for two independent groups; no <em>signed</em> rank this time) is the same model to a very close approximation, just on the ranks of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> instead of the actual values:</p>
+<p>上式中，<span class="math inline">\(x_i\)</span> 是示性变量（0 或 1），用于示意数据点 <span class="math inline">\(i\)</span> 是从一个组里采样还是另一个组里采样的。<a href="https://en.wikipedia.org/wiki/Dummy_variable_(statistics)">示性变量（indicator variable，dummy coding）</a> 存在于很多线性模型当中，我们很快就会看到它有什么用途。</p>
+<p><strong>Mann-Whitney U 检验</strong>（也被称为对两个独立组的 <strong>Wilcoxon 秩和检验</strong>；这次没有 <em>符号</em> 秩了）是有着非常接近的近似的相同模型，除了它不是在原有值而是在 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(y\)</span> 的秩上计算的：</p>
 <p><span class="math inline">\(rank(y_i) = \beta_0 + \beta_1 x_i \qquad \mathcal{H}_0: \beta_1 = 0\)</span></p>
-<p>To me, equivalences like this make “non-parametric” statistics much easier to understand. The approximation is appropriate <a href="simulations/simulate_mannwhitney.html">when the sample size is larger than 11 in each group and virtually perfect when N &gt; 30 in each group</a>.</p>
+<p>对我来说，这种等价性使得“非参”统计量更为容易地理解了。这种近似<a href="simulations/simulate_mannwhitney.html">在每个组样本量大于 11 的时候比较合适，在每个组样本量大于 30 的时候视觉效果上相当完美</a>.</p>
 </div>
 <div id="dummy" class="section level3">
-<h3><span class="header-section-number">5.1.2</span> Theory: Dummy coding</h3>
-<p>Dummy coding can be understood visually. The indicator is on the x-axis so data points from the first group are located at <span class="math inline">\(x = 0\)</span> and data points from the second group is located at <span class="math inline">\(x = 1\)</span>. Then <span class="math inline">\(\beta_0\)</span> is the intercept (blue line) and <span class="math inline">\(\beta_1\)</span> is the slope between the two means (red line). Why? Because when <span class="math inline">\(\Delta x = 1\)</span> the slope equals the difference because:</p>
+<h3><span class="header-section-number">5.1.2</span> 理论：示性变量</h3>
+<p>示性变量可以用图像辅助理解。这个变量在 x 轴，所以第一个组的数据点位于 <span class="math inline">\(x = 0\)</span>，第二个组的位于 <span class="math inline">\(x = 1\)</span>。然后 <span class="math inline">\(\beta_0\)</span> 是截距（蓝线），<span class="math inline">\(\beta_1\)</span> 是两个均值之间的斜率（红线）。为什么？因为当 <span class="math inline">\(\Delta x = 1\)</span> 的时候，斜率等于相差值：</p>
 <p><span class="math inline">\(slope = \Delta y / \Delta x = \Delta y / 1 = \Delta y = difference\)</span></p>
-<p>Magic! Even categorical differences can be modelled using linear models! It’s a true Swizz army knife.</p>
+<p>奇迹啊！即使类别之间的差值也可以用线性模型来表达！这真的是一把瑞士军刀。</p>
 <div class="fold s">
 <pre class="r"><code># Data
 N = 20  # Number of data points per group
@@ -827,17 +827,17 @@ theme_axis(P_t2, jitter = TRUE, xlim = c(-0.3, 2), legend.position = c(0.53, 0.0
 </div>
 </div>
 <div id="dummy2" class="section level3">
-<h3><span class="header-section-number">5.1.3</span> Theory: Dummy coding (continued)</h3>
-<p>If you feel like you get dummy coding now, just skip ahead to the next section. Here is a more elaborate explanation of dummy coding:</p>
-<p>If a data point was sampled from the first group, i.e., when <span class="math inline">\(x_i = 0\)</span>, the model simply becomes <span class="math inline">\(y = \beta_0 + \beta_1 \cdot 0 = \beta_0\)</span>. In other words, the model predicts that that data point is <span class="math inline">\(beta_0\)</span>. It turns out that the <span class="math inline">\(\beta\)</span> which best predicts a set of data points is the <em>mean</em> of those data points, so <span class="math inline">\(\beta_0\)</span> is the mean of group 1.</p>
-<p>On the other hand, data points sampled from the second group would have <span class="math inline">\(x_i = 1\)</span> so the model becomes <span class="math inline">\(y_i = \beta_0 + \beta_1\cdot 1 = \beta_0 + \beta_1\)</span>. In other words, we add <span class="math inline">\(\beta_1\)</span> to “shift” from the mean of the first group to the mean of the second group. Thus <span class="math inline">\(\beta_1\)</span> becomes the <em>mean difference</em> between the groups.</p>
-<p>As an example, say group 1 is 25 years old (<span class="math inline">\(\beta_0 = 25\)</span>) and group 2 is 28 years old (<span class="math inline">\(\beta_1 = 3\)</span>), then the model for a person in group 1 is <span class="math inline">\(y = 25 + 3 \cdot 0 = 25\)</span> and the model for a person in group 2 is <span class="math inline">\(y = 25 + 3 \cdot 1 = 28\)</span>.</p>
-<p>Hooray, it works! For first-timers it takes a few moments to understand dummy coding, but you only need to know addition and multiplication to get there!</p>
+<h3><span class="header-section-number">5.1.3</span> 理论：示性变量（后续）</h3>
+<p>如果你觉得你理解了示性变量了，可以直接跳到下一章节。这里是对示性变量更为详细的解释：</p>
+<p>如果数据点采样自第一个组，即，<span class="math inline">\(x_i = 0\)</span>，模型就会变成 <span class="math inline">\(y = \beta_0 + \beta_1 \cdot 0 = \beta_0\)</span>。换句话说，模型预测数据的值是 <span class="math inline">\(beta_0\)</span>。这意味着作为一堆数据点的最好的预测，<span class="math inline">\(\beta\)</span> 是这些数据点的 <em>均值</em>，所以 <span class="math inline">\(\beta_0\)</span> 是第 1 组的均值。</p>
+<p>另一方面，采样自第二个组的数据点有 <span class="math inline">\(x_i = 1\)</span>，所以模型变成了 <span class="math inline">\(y_i = \beta_0 + \beta_1\cdot 1 = \beta_0 + \beta_1\)</span>。换句话说，我们加上了 <span class="math inline">\(\beta_1\)</span>，从第一组的均值移动到了第二组的均值。所以 <span class="math inline">\(\beta_1\)</span> 成为了两个组的 <em>均值之差</em>。</p>
+<p>举个例子，假设第 1 组人是 25 岁（<span class="math inline">\(\beta_0 = 25\)</span>），第 2 组人 28 岁（<span class="math inline">\(\beta_1 = 3\)</span>），那么对于第 1 组的人的模型是 <span class="math inline">\(y = 25 + 3 \cdot 0 = 25\)</span>，第 2 组的人的模型是 <span class="math inline">\(y = 25 + 3 \cdot 1 = 28\)</span>。</p>
+<p>呼，搞定！对于新来者，理解示性变量需要一些时间，但是你只需要懂得加法和乘法就能上手了！</p>
 </div>
-<div id="r-code-independent-t-test" class="section level3">
-<h3><span class="header-section-number">5.1.4</span> R code: independent t-test</h3>
-<p>As a reminder, when we write <code>y ~ 1 + x</code> in R, it is shorthand for <span class="math inline">\(y = \beta_0 \cdot 1 + \beta_1 \cdot x\)</span> and R goes on computing the <span class="math inline">\(\beta\)</span>s for you. Thus <code>y ~ 1 + x</code> is the R-way of writing <span class="math inline">\(y = a \cdot x + b\)</span>.</p>
-<p>Notice the identical <code>t</code>, <code>df</code>, <code>p</code>, and estimates. We can get the confidence interval by running <code>confint(lm(...))</code>.</p>
+<div id="r--t--2" class="section level3">
+<h3><span class="header-section-number">5.1.4</span> R 代码：独立 t 检验</h3>
+<p>提醒一下，当我们在 R 里写 <code>y ~ 1 + x</code>，它是 <span class="math inline">\(y = \beta_0 \cdot 1 + \beta_1 \cdot x\)</span> 的简写，R 会为你计算 <span class="math inline">\(\beta\)</span> 值。因此，<code>y ~ 1 + x</code> 是 R 里面表达 <span class="math inline">\(y = a \cdot x + b\)</span> 的形式。</p>
+<p>注意相等的 <code>t</code>、<code>df</code>、<code>p</code>和估计值。我们可以用 <code>confint(lm(...))</code> 获得置信区间。</p>
 <pre class="r"><code># Built-in independent t-test on wide data
 a = t.test(y, y2, var.equal = TRUE)
 
@@ -848,7 +848,7 @@ b = lm(value ~ 1 + group_y2)  # Using our hand-made dummy regressor
 # Note: We could also do the dummy-coding in the model
 # specification itself. Same result.
 c = lm(value ~ 1 + I(group == &#39;y2&#39;))</code></pre>
-<p>Results:</p>
+<p>结果：</p>
 <div id="htmlwidget-a8c309953f8c002dc3f2" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-a8c309953f8c002dc3f2">{"x":{"filter":"none","data":[["t.test","lm"],[-0.0872,-0.0872],[null,null],[0.738,null],[48,98],[-0.233,-0.0617],[0.3225,1.2521]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>model<\/th>\n      <th>mean_y<\/th>\n      <th>difference<\/th>\n      <th>p.value<\/th>\n      <th>df<\/th>\n      <th>conf.low<\/th>\n      <th>conf.high<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"lengthChange":false,"ordering":false,"autoWidth":true,"bPaginate":false,"bInfo":false,"paging":false,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6]}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <div class="fold o">
@@ -903,8 +903,8 @@ c = lm(value ~ 1 + I(group == &#39;y2&#39;))</code></pre>
 ## F-statistic: 3.233 on 1 and 98 DF,  p-value: 0.07525</code></pre>
 </div>
 </div>
-<div id="r-code-mann-whitney-u" class="section level3">
-<h3><span class="header-section-number">5.1.5</span> R code: Mann-Whitney U</h3>
+<div id="r-mann-whitney-u-" class="section level3">
+<h3><span class="header-section-number">5.1.5</span> R 代码：Mann-Whitney U 检验</h3>
 <pre class="r"><code># Wilcoxon / Mann-Whitney U
 a = wilcox.test(y, y2)
 
@@ -942,14 +942,14 @@ b = lm(rank(value) ~ 1 + group_y2)  # compare to linear model above</code></pre>
 </div>
 </div>
 <div id="welch" class="section level2">
-<h2><span class="header-section-number">5.2</span> Welch’s t-test</h2>
-<p>This is identical to the (Student’s) <a href="#t2">independent t-test</a> above except that Student’s assumes identical variances and <strong>Welch’s t-test</strong> does not. So the linear model is the same but we model one variance per group. We can do this using the <code>nlme</code> package (<a href="https://stats.stackexchange.com/questions/142685/equivalent-to-welchs-t-test-in-gls-framework">see more details here</a>):</p>
+<h2><span class="header-section-number">5.2</span> Welch t 检验</h2>
+<p>这等价于以上（学生）<a href="#t2">独立 t 检验</a>，除了学生 t 检验假设同方差，而 <strong>Welch t 检验</strong> 没有这个假设。所以线性模型是相同的，但是我们对每一个组指定一个方差。我们可用 <code>nlme</code> 包（<a href="https://stats.stackexchange.com/questions/142685/equivalent-to-welchs-t-test-in-gls-framework">查阅细节</a>）：</p>
 <pre class="r"><code># Built-in
 a = t.test(y, y2, var.equal=FALSE)
 
 # As linear model with per-group variances
 b = nlme::gls(value ~ 1 + group_y2, weights = nlme::varIdent(form=~1|group), method=&quot;ML&quot;)</code></pre>
-<p>Results:</p>
+<p>结果：</p>
 <div id="htmlwidget-13141ec77403f9884899" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-13141ec77403f9884899">{"x":{"filter":"none","data":[["t.test","gls"],[-0.0952,-0.0952],[0.5952,0.5952],[0.0753,0.0753],[-1.798,-1.798],[-0.062,-0.0536],[1.2524,1.244]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>model<\/th>\n      <th>mean_y<\/th>\n      <th>mean_diff<\/th>\n      <th>p.value<\/th>\n      <th>t<\/th>\n      <th>conf.low<\/th>\n      <th>conf.high<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"lengthChange":false,"ordering":false,"autoWidth":true,"bPaginate":false,"bInfo":false,"paging":false,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6]}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <div class="fold o">
@@ -996,17 +996,17 @@ b = nlme::gls(value ~ 1 + group_y2, weights = nlme::varIdent(form=~1|group), met
 </div>
 </div>
 </div>
-<div id="three-or-more-means" class="section level1">
-<h1><span class="header-section-number">6</span> Three or more means</h1>
-<p>ANOVAs are linear models with (only) categorical predictors so they simply extend everything we did above, relying heavily on dummy coding. Do make sure to read <a href="#dummy">the section on dummy coding</a> if you haven’t already.</p>
+<div id="section-8" class="section level1">
+<h1><span class="header-section-number">6</span> 三个或多个均值</h1>
+<p>ANOVA 是（只）有类别自变量的线性模型，所以它们可以简单地扩展我们上述的所有模型，并重度依赖示性变量。如果你还没准备好，确保去阅读<a href="#dummy">示性变量一节</a>。</p>
 <div id="anova1" class="section level2">
-<h2><span class="header-section-number">6.1</span> One-way ANOVA and Kruskal-Wallis</h2>
-<div id="theory-as-linear-models-4" class="section level3">
-<h3><span class="header-section-number">6.1.1</span> Theory: As linear models</h3>
-<p>Model: One mean for each group predicts <span class="math inline">\(y\)</span>.</p>
+<h2><span class="header-section-number">6.1</span> 单因素方差分析（one-way ANOVA）和 Kruskal-Wallis 检验</h2>
+<div id="section-9" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> 理论：作为线性模型</h3>
+<p>模型：每组一个均值来预测 <span class="math inline">\(y\)</span>。</p>
 <p><span class="math inline">\(y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 +... \qquad \mathcal{H}_0: y = \beta_0\)</span></p>
-<p>where <span class="math inline">\(x_i\)</span> are indicators (<span class="math inline">\(x=0\)</span> or <span class="math inline">\(x=1\)</span>) where at most one <span class="math inline">\(x_i=1\)</span> while all others are <span class="math inline">\(x_i=0\)</span>.</p>
-<p>Notice how this is just “more of the same” of what we already did in other models above. When there are only two groups, this model is <span class="math inline">\(y = \beta_0 + \beta_1*x\)</span>, i.e. the <a href="#t2">independent t-test</a>. If there is only one group, it is <span class="math inline">\(y = \beta_0\)</span>, i.e. the <a href="#t1">one-sample t-test</a>. This is easy to see in the visualization below - just cover up a few groups and see that it matches the other visualizations above.</p>
+<p>其中 <span class="math inline">\(x_i\)</span> 是示性变量（<span class="math inline">\(x=0\)</span> 或 <span class="math inline">\(x=1\)</span>），且最多只有一个 <span class="math inline">\(x_i=1\)</span> 且其余 <span class="math inline">\(x_i=0\)</span>。</p>
+<p>注意这和我们已做的其它模型“有很大的相同之处”。如果只有两个组，这个模型就是 <span class="math inline">\(y = \beta_0 + \beta_1*x\)</span>，即<a href="#t2">独立 t 检验</a>。如果只有一个组，这就是 <span class="math inline">\(y = \beta_0\)</span>，即 <a href="#t1">单样本 t 检验</a>。从可视化中可以很容易地看出来 —- 只要遮盖掉一些组然后看看图像是否对上了其它可视化结果。</p>
 <div class="fold s">
 <pre class="r"><code># Figure
 N = 15
@@ -1040,14 +1040,14 @@ P_anova1 = ggplot(D_anova1, aes(x=x, y=y)) +
 theme_axis(P_anova1, xlim = c(-0.5, 4), legend.position = c(0.7, 0.1))</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-37-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
-<p>A one-way ANOVA has a log-linear counterpart called <a href="#goodness">goodness-of-fit</a> test which we’ll return to. By the way, since we now regress on more than one <span class="math inline">\(x\)</span>, the one-way ANOVA is a <strong>multiple regression</strong> model.</p>
-<p>The <strong>Kruskal-Wallis</strong> test is simply a <strong>one-way ANOVA</strong> on the rank-transformed <span class="math inline">\(y\)</span> (<code>value</code>):</p>
+<p>单因素方差分析有一个 log 线性版本，称为<a href="#goodness">拟合优度</a>检验，我们稍后会讲到。顺便一说，因为我们现在对多个 <span class="math inline">\(x\)</span> 进行回归，因此单因素方差分析是 <strong>多元回归</strong> 模型。</p>
+<p><strong>Kruskal-Wallis</strong> 检验只是对于秩转换的 <span class="math inline">\(y\)</span>（<code>value</code>）的 <strong>单因素方差分析</strong>：</p>
 <p><span class="math inline">\(rank(y) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 +...\)</span></p>
-<p>This approximation is <a href="simulations/simulate_kruskall.html">good enough for 12 or more data points</a>. Again, if you do this for just one or two groups, we’re already acquainted with those equations, i.e. the <a href="#t1">Wilcoxon signed-rank test</a> or the <a href="#t2">Mann-Whitney U test</a> respectively.</p>
+<p>这个近似<a href="simulations/simulate_kruskall.html">在 12 或更多数据点时候已经近似得足够好</a>。同样，如果你对一个或两个组做这个检验，我们已经有对应等式，分别为 <a href="#t1">Wilcoxon 符号秩检验</a> 或 <a href="#t2">Mann-Whitney U 检验</a>。</p>
 </div>
-<div id="example-data" class="section level3">
-<h3><span class="header-section-number">6.1.2</span> Example data</h3>
-<p>We make a three-level factor with the levels <code>a</code>, <code>b</code>, and <code>c</code> so that the <strong>one-way ANOVA</strong> basically becomes a “three-sample t-test”. Then we manually do the <a href="#dummy">dummy coding</a> of the groups.</p>
+<div id="section-10" class="section level3">
+<h3><span class="header-section-number">6.1.2</span> 示例数据</h3>
+<p>我们创建可能取值为 <code>a</code>、<code>b</code>、<code>c</code> 的类别变量，那么 <strong>单因素方差分析</strong> 基本上成为了“三样本 t 检验”。我们手动对每个组创建<a href="#dummy">示性变量</a>。</p>
 <pre class="r"><code># Three variables in &quot;long&quot; format
 N = 20  # Number of samples per group
 D = data.frame(
@@ -1062,15 +1062,15 @@ D = data.frame(
 )  # N of each level</code></pre>
 <div id="htmlwidget-a88f053f2732cc2e0b28" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-a88f053f2732cc2e0b28">{"x":{"filter":"none","data":[[-0.326,0.1685,0.8539,1.4679,-0.4386,-0.5875,0.6481,-0.2615,2.32,0.9258,-1.0461,-1.6559,-1.1406,0.3472,-1.4306,-0.7991,0.0795,0.6795,0.4759,-0.2803,2.0215,2.0132,0.9215,2.3149,0.0628,2.2773,-0.0776,2.561,0.5049,-0.2382,0.8022,-0.3154,0.0651,-0.8882,1.8539,1.0016,1.226,1.4217,1.3601,1.1116,-0.1408,1.3192,-0.2965,2.4944,0.1241,0.0644,0.3484,0.6474,-1.0023,1.8131,0.8172,0.8068,0.6449,1.1154,0.0504,1.6308,-1.6811,1.3771,0.5276,-0.6605],["a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","b","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c","c"],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>value<\/th>\n      <th>group<\/th>\n      <th>group_b<\/th>\n      <th>group_c<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"lengthChange":false,"ordering":false,"autoWidth":true,"bPaginate":true,"bInfo":true,"paging":true,"columnDefs":[{"className":"dt-right","targets":[0,2,3]}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
-<p>With group a’s intercept omni-present, see how exactly one other parameter is added to predict <code>value</code> for group b and c in a given row (scroll to he end). Thus data points in group b never affect the estimates in group c.</p>
+<p>伴随着组别 a 的截距全都展示了出来，我们看到每一行有且仅有另一个组 b 或组 c 的参数添加进去，用于预测 <code>value</code>（滑动到最后）。因此组 b 的数据点永远不会影响到组 c 的拟合值。</p>
 </div>
-<div id="r-code-one-way-anova" class="section level3">
-<h3><span class="header-section-number">6.1.3</span> R code: one-way ANOVA</h3>
-<p>OK, let’s see the identity between a dedicated <strong>ANOVA</strong> function (<code>car::Anova</code>) and the dummy-coded in-your-face linear model in <code>lm</code>.</p>
+<div id="r-" class="section level3">
+<h3><span class="header-section-number">6.1.3</span> R 代码：单因素方差分析</h3>
+<p>OK，我们来看看一个专用的 <strong>方差分析</strong> 函数（<code>car::Anova</code>）和手动创建示性变量的 <code>lm</code> 线性模型结果是否一致：</p>
 <pre class="r"><code># Compare built-in and linear model
 a = car::Anova(aov(value ~ group, D))  # Dedicated ANOVA function
 b = lm(value ~ 1 + group_b + group_c, data = D)  # As in-your-face linear model</code></pre>
-<p>Results:</p>
+<p>结果：</p>
 <div id="htmlwidget-d84c2c56e5a7ab8230c2" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-d84c2c56e5a7ab8230c2">{"x":{"filter":"none","data":[["Anova","lm"],[2,2],[57,57],[5,-0.33651],[0.00998,0.73795]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>model<\/th>\n      <th>df<\/th>\n      <th>df.residual<\/th>\n      <th>F<\/th>\n      <th>p.value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"lengthChange":false,"ordering":false,"autoWidth":true,"bPaginate":false,"bInfo":false,"paging":false,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <div class="fold o">
@@ -1102,16 +1102,16 @@ b = lm(value ~ 1 + group_b + group_c, data = D)  # As in-your-face linear model<
 ## Multiple R-squared:  0.1493, Adjusted R-squared:  0.1194 
 ## F-statistic:     5 on 2 and 57 DF,  p-value: 0.009984</code></pre>
 </div>
-<p>Actually, <code>car::Anova</code> and <code>aov</code> are wrappers around <code>lm</code> so the identity comes as no surprise. It only shows that the dummy-coded formula, which had a direct interpretation as a linear model, is the one that underlies the shorthand notation syntax <code>y ~ factor</code>. Indeed, the only real reason to use aov and <code>car::Anova</code> rather than <code>lm</code> is to get a nicely formatted ANOVA table.</p>
-<p>The default output of <code>lm</code> returns parameter estimates as well (bonus!), which you can see if you unfold the R output above. However, because this IS the ANOVA model, you can also get parameter estimates out into the open by calling <code>coefficients(aov(...))</code>.</p>
-<p>Note that I do not use the <code>aov</code> function because it computes type-I sum of squares, which is widely discouraged. There is a BIG polarized debate about whether to use type-II (as <code>car::Anova</code> does by default) or type-III sum of squares (set <code>car::Anova(..., type=3)</code>), but let’s skip that for now.</p>
+<p>实际上，<code>car::Anova</code> 和 <code>aov</code> 就是 <code>lm</code> 包装而来的，所以相等结果一点都不令人感到意外。这只说明了，可直接理解为线性模型的示性变量公式，是缩写语法 <code>y ~ factor</code> 背后的模型。实际上，真正的唯一使用 <code>aov</code> 和 <code>car::Anova</code> 而不使用 <code>lm</code> 的原因，是为了得到一个优美格式化的方差分析表格。</p>
+<p><code>lm</code> 的默认输出包含了参数估计结果（额外收获！），你可以将上述 R 代码展开来看。然而，因为它就是方差分析模型，你也可以用 <code>coefficients(aov(...))</code> 得到参数估计结果。</p>
+<p>注意，我没有使用 <code>aov</code> 函数，因为它计算了第 1 类平方和，这种计算方式很不受鼓励。围绕着使用第 2 类平方和（<code>car::Anova</code> 默认）还是第 3 类平方和（使用 <code>car::Anova(..., type=3)</code>）有着<strong>很多</strong>争论，但是我们这里略过不提。</p>
 </div>
-<div id="r-code-kruskal-wallis" class="section level3">
-<h3><span class="header-section-number">6.1.4</span> R code: Kruskal-Wallis</h3>
+<div id="r-kruskal-wallis-" class="section level3">
+<h3><span class="header-section-number">6.1.4</span> R 代码：Kruskal-Wallis 检验</h3>
 <pre class="r"><code>a = kruskal.test(value ~ group, D)  # Built-in
 b = lm(rank(value) ~ 1 + group_b + group_c, D)  # As linear model
 c = car::Anova(aov(rank(value) ~ group, D))  # The same model, using a dedicated ANOVA function. It just wraps lm.</code></pre>
-<p>Results:</p>
+<p>结果：</p>
 <div id="htmlwidget-8061767ca16dfb1004f2" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-8061767ca16dfb1004f2">{"x":{"filter":"none","data":[["kruskal.test","lm"],[2,2],[0.0158,0.0133]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>model<\/th>\n      <th>df<\/th>\n      <th>p.value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"lengthChange":false,"ordering":false,"autoWidth":true,"bPaginate":false,"bInfo":false,"paging":false,"columnDefs":[{"className":"dt-right","targets":[1,2]}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <div class="fold o">
@@ -1153,11 +1153,11 @@ c = car::Anova(aov(rank(value) ~ group, D))  # The same model, using a dedicated
 </div>
 </div>
 <div id="anova2" class="section level2">
-<h2><span class="header-section-number">6.2</span> Two-way ANOVA (plot in progress!)</h2>
-<div id="theory-as-linear-models-5" class="section level3">
-<h3><span class="header-section-number">6.2.1</span> Theory: As linear models</h3>
-<p>Model: one mean per group (main effects) plus these means multiplied across factors (interaction effects). The main effects are the <a href="#anova1">one-way ANOVA</a>s above, though in the context of a larger model. The interaction effect is harder to explain in the abstract even though it’s just a few numbers multiplied with each other. I will leave that to the teachers to keep focus on equivalences here :-)</p>
-<p>Switching to matrix notation:</p>
+<h2><span class="header-section-number">6.2</span> 双因素方差分析（two-way ANOVA）（待绘图）</h2>
+<div id="section-11" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> 理论：作为线性模型</h3>
+<p>Model: one mean per group (main effects) plus these means multiplied across factors (interaction effects). The main effects are the <a href="#anova1">单因素方差分析</a>s above, though in the context of a larger model. The interaction effect is harder to explain in the abstract even though it’s just a few numbers multiplied with each other. I will leave that to the teachers to keep focus on equivalences here :-)</p>
+<p>使用矩阵记号：</p>
 <p><span class="math inline">\(y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_1 X_2 \qquad \mathcal{H}_0: \beta_3 = 0\)</span></p>
 <p>Here <span class="math inline">\(\beta_i\)</span> are vectors of betas of which only one is selected by the indicator vector <span class="math inline">\(X_i\)</span>. The <span class="math inline">\(\mathcal{H}_0\)</span> shown here is the interaction effect. Note that the intercept <span class="math inline">\(\beta_0\)</span>, to which all other <span class="math inline">\(\beta\)</span>s are relative, is now the mean for the first level of all factors.</p>
 <p>Continuing with the dataset from the one-way ANOVA above, let’s add a crossing factor <code>mood</code> so that we can test the <code>group:mood</code> interaction (a 3x2 ANOVA). We also do the <a href="#dummy">dummy coding</a> of this factor needed for the linear model.</p>
@@ -1184,9 +1184,9 @@ theme_axis(P_anova2, xlim = c(-0.5, 3.5)) + theme(axis.text.x = element_text())<
 <p><img src="index_files/figure-html/unnamed-chunk-48-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 </div>
-<div id="r-code-two-way-anova" class="section level3">
-<h3><span class="header-section-number">6.2.2</span> R code: Two-way ANOVA</h3>
-<p>Now let’s turn to the actual modeling in R. We compare a dedicated ANOVA function (<code>car::Anova</code>; see <a href="#anova1">One-Way ANOVA</a> why) to the linear model (<code>lm</code>). Notice that in ANOVA, we are testing a full factor interaction all at once which involves many parameters (two in this case), so we can’t look at the overall model fit nor any particular parameter for the result. Therefore, I use a <a href="https://en.wikipedia.org/wiki/Likelihood-ratio_test">likelihood-ratio test</a> to compare a full two-way ANOVA model (“saturated”) to one without the interaction effect(s). The <code>anova</code> function does this test. Even though that looks like cheating, it’s just computing likelihoods, p-values, etc. on the models that were already fitted, so it’s legit!</p>
+<div id="r--1" class="section level3">
+<h3><span class="header-section-number">6.2.2</span> R 代码：双因素方差分析</h3>
+<p>Now let’s turn to the actual modeling in R. We compare a dedicated ANOVA function (<code>car::Anova</code>; see <a href="#anova1">One-Way ANOVA</a> why) to the linear model (<code>lm</code>). Notice that in ANOVA, we are testing a full factor interaction all at once which involves many parameters (two in this case), so we can’t look at the overall model fit nor any particular parameter for the result. Therefore, I use a <a href="https://en.wikipedia.org/wiki/Likelihood-ratio_test">likelihood-ratio test</a> to compare a full 双因素方差分析 model (“saturated”) to one without the interaction effect(s). The <code>anova</code> function does this test. Even though that looks like cheating, it’s just computing likelihoods, p-values, etc. on the models that were already fitted, so it’s legit!</p>
 <pre class="r"><code># Dedicated two-way ANOVA functions
 a = car::Anova(aov(value ~ mood * group, D), type=&#39;II&#39;)  # Normal notation. &quot;*&quot; both multiplies and adds main effects
 b = car::Anova(aov(value ~ mood + group + mood:group, D))  # Identical but more verbose about main effects and interaction
@@ -1195,7 +1195,7 @@ b = car::Anova(aov(value ~ mood + group + mood:group, D))  # Identical but more 
 full = lm(value ~ 1 + group_b + group_c + mood_happy + group_b:mood_happy + group_c:mood_happy, D)  # Full model
 null = lm(value ~ 1 + group_b + group_c + mood_happy, D)  # Without interaction
 c = anova(null, full)  # whoop whoop, same F, p, and Dfs</code></pre>
-<p>Results:</p>
+<p>结果：</p>
 <div id="htmlwidget-737159abe51b7f412fad" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-737159abe51b7f412fad">{"x":{"filter":"none","data":[["Anova mood:group","lm LRT"],[1.8534,1.8534],[2,2],[0.1665,0.1665],[3.4591,3.4591],[50.3926,50.3926]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>model<\/th>\n      <th>F<\/th>\n      <th>df<\/th>\n      <th>p.value<\/th>\n      <th>sumsq<\/th>\n      <th>res.sumsq<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"lengthChange":false,"ordering":false,"autoWidth":true,"bPaginate":false,"bInfo":false,"paging":false,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5]}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <div class="fold o">
@@ -1270,13 +1270,13 @@ f = lm(value ~ 1 + mood_happy, D)</code></pre>
 </div>
 </div>
 <div id="ancova" class="section level2">
-<h2><span class="header-section-number">6.3</span> ANCOVA</h2>
-<p>This is simply ANOVA with a continuous regressor added so that it now contains continuous and (dummy-coded) categorical predictors. For example, if we continue with the <a href="#anova1">one-way ANOVA</a> example, we can add <code>age</code> and it is now called a <strong>one-way ANCOVA</strong>:</p>
+<h2><span class="header-section-number">6.3</span> 协方差分析（ANCOVA）</h2>
+<p>This is simply ANOVA with a continuous regressor added so that it now contains continuous and (dummy-coded) categorical predictors. For example, if we continue with the <a href="#anova1">单因素方差分析</a> example, we can add <code>age</code> and it is now called a <strong>单因素协方差分析（one-way ANCOVA）</strong>：</p>
 <p><span class="math inline">\(y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_3 age\)</span></p>
-<p>… where <span class="math inline">\(x_i\)</span> are our usual dummy-coded indicator variables. <span class="math inline">\(\beta_0\)</span> is now the mean for the first group at <span class="math inline">\(age=0\)</span>. You can turn all ANOVAs into ANCOVAs this way, e.g. by adding <span class="math inline">\(\beta_N \cdot age\)</span> to our <strong>two-way ANOVA</strong> in the previous section. But let us go ahead with our one-way ANCOVA, starting by adding <span class="math inline">\(age\)</span> to our dataset:</p>
+<p>… where <span class="math inline">\(x_i\)</span> are our usual dummy-coded indicator variables. <span class="math inline">\(\beta_0\)</span> is now the mean for the first group at <span class="math inline">\(age=0\)</span>. You can turn all ANOVAs into ANCOVAs this way, e.g. by adding <span class="math inline">\(\beta_N \cdot age\)</span> to our <strong>双因素方差分析</strong> in the previous section. But let us go ahead with our one-way ANCOVA, starting by adding <span class="math inline">\(age\)</span> to our dataset:</p>
 <pre class="r"><code># Update data with a continuous covariate
 D$age = D$value + rnorm_fixed(nrow(D), sd = 3)  # Correlated to value</code></pre>
-<p>This is best visualized using colors for groups instead of x-position. The <span class="math inline">\(\beta\)</span>s are still the average <span class="math inline">\(y\)</span>-offset of the data points, only now we model each group using a slope instead of an intercept. In other words, the one-way ANOVA is sort of <a href="#t1">one-sample t-tests</a> model for each group (<span class="math inline">\(y = \beta_0\)</span>) while the <strong>one-way ANCOVA</strong> is sort of <a href="#correlation">Pearson correlation</a> model for each group (<span class="math inline">\(y_i = \beta_0 + \beta_i + \beta_1 \cdot age\)</span>):</p>
+<p>This is best visualized using colors for groups instead of x-position. The <span class="math inline">\(\beta\)</span>s are still the average <span class="math inline">\(y\)</span>-offset of the data points, only now we model each group using a slope instead of an intercept. In other words, the one-way ANOVA is sort of <a href="#t1">one-sample t-tests</a> model for each group (<span class="math inline">\(y = \beta_0\)</span>) while the <strong>单因素协方差分析</strong> is sort of <a href="#correlation">Pearson correlation</a> model for each group (<span class="math inline">\(y_i = \beta_0 + \beta_i + \beta_1 \cdot age\)</span>):</p>
 <div class="fold s">
 <pre class="r"><code># For linear model plot
 D$pred = predict(lm(value ~ age + group, D))
@@ -1305,7 +1305,7 @@ result_age = anova(null_age, full)
 # Testing main effect of groupusing Likelihood-ratio test
 null_group = lm(value ~ 1 + age, D)  # Full without group. Pearson correlation!
 result_group = anova(null_group, full)</code></pre>
-<p>Results:</p>
+<p>结果：</p>
 <div id="htmlwidget-394928ba93d5608fbef0" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-394928ba93d5608fbef0">{"x":{"filter":"none","data":[["age","age","group","group"],["Anova","lm","Anova","lm"],[8.995,8.995,3.3186,3.3186],[1,1,2,2],[0.004,0.004,0.0434,0.0434],[7.8886,7.8886,5.8207,5.8207],[49.1114,49.1114,49.1114,49.1114],[56,56,56,56]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>term<\/th>\n      <th>model<\/th>\n      <th>F<\/th>\n      <th>df<\/th>\n      <th>p.value<\/th>\n      <th>sumsq<\/th>\n      <th>res.sumsq<\/th>\n      <th>res.df<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"lengthChange":false,"ordering":false,"autoWidth":true,"bPaginate":false,"bInfo":false,"paging":false,"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7]}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <div class="fold o">
@@ -1377,10 +1377,8 @@ sm::sm.ancova(x=D$age, y=D$value, group=D$group, display='none', model='equal')
 <h1><span class="header-section-number">7</span> Proportions: Chi-square is a log-linear model</h1>
 <p>Recall that when you take the logarithm, you can easily make statements about <em>proportions</em>, i.e., that for every increase in <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> increases a certain percentage. This turns out to be one of the simplest (and therefore best!) ways to make count data and contingency tables intelligible. See <a href="https://www.uni-tuebingen.de/fileadmin/Uni_Tuebingen/SFB/SFB_833/A_Bereich/A1/Christoph_Scheepers_-_Statistikworkshop.pdf">this nice introduction</a> to Chi-Square tests as linear models.</p>
 <div id="goodness" class="section level2">
-<h2><span class="header-section-number">7.1</span> Goodness of fit</h2>
-<div id="theory-as-log-linear-model" class="section level3">
-<h3><span class="header-section-number">7.1.1</span> Theory: As log-linear model</h3>
-<p>Model: a single intercept predicts <span class="math inline">\(log(y)\)</span>.</p>
+<h2><span class="header-section-number">7.1</span> 拟合优度检验</h2>
+<p>理论：作为 log 线性模型 Model: a single intercept predicts <span class="math inline">\(log(y)\)</span>.</p>
 <p>I’ll refer you to take a look at <a href="#contingency">the section on contingency tables</a> which is basically a “two-way goodness of fit”.</p>
 <!--
 Before log-transforming, this is a one-way ANOVA:
@@ -1397,9 +1395,8 @@ $log(y) = log(\beta_1*x_1 + \beta_2*x_2 + \beta_3*x_3 +...) \qquad \mathcal{H}_0
 
 $log(y) = log(N\beta_1*x_1/N + N)$
 -->
-</div>
-<div id="example-data-1" class="section level3">
-<h3><span class="header-section-number">7.1.2</span> Example data</h3>
+<div id="section-12" class="section level3">
+<h3><span class="header-section-number">7.1.1</span> 示例数据</h3>
 <p>For this, we need some wide count data:</p>
 <pre class="r"><code># Data in long format
 D = data.frame(mood = c(&#39;happy&#39;, &#39;sad&#39;, &#39;meh&#39;),
@@ -1411,8 +1408,8 @@ D$mood_sad = ifelse(D$mood == &#39;sad&#39;, 1, 0)</code></pre>
 <div id="htmlwidget-3371abadadb504ba1413" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-3371abadadb504ba1413">{"x":{"filter":"none","data":[["happy","sad","meh"],[60,90,70],[1,0,0],[0,1,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>mood<\/th>\n      <th>counts<\/th>\n      <th>mood_happy<\/th>\n      <th>mood_sad<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"lengthChange":false,"ordering":false,"autoWidth":true,"bPaginate":false,"bInfo":false,"paging":false,"columnDefs":[{"className":"dt-right","targets":[1,2,3]}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="r-code-goodness-of-fit" class="section level3">
-<h3><span class="header-section-number">7.1.3</span> R code: Goodness of fit</h3>
+<div id="r-goodness-of-fit" class="section level3">
+<h3><span class="header-section-number">7.1.2</span> R 代码：Goodness of fit</h3>
 <p>Now let’s see that the Goodness of fit is just a log-linear equivalent to a one-way ANOVA. We set <code>family = poisson()</code> which defaults to setting a logarithmic <a href="https://en.wikipedia.org/wiki/Generalized_linear_model#Link_function">link function</a> (<code>family = poisson(link='log')</code>).</p>
 <pre class="r"><code># Built-in test
 a = chisq.test(D$counts)
@@ -1449,10 +1446,8 @@ c = glm(counts ~ mood, data = D, family = poisson())</code></pre>
 </div>
 </div>
 <div id="contingency" class="section level2">
-<h2><span class="header-section-number">7.2</span> Contingency tables</h2>
-<div id="theory-as-log-linear-model-1" class="section level3">
-<h3><span class="header-section-number">7.2.1</span> Theory: As log-linear model</h3>
-<p>The theory here will be a bit more convoluted, and I mainly write it up so that you can get the <em>feeling</em> that it really is just a log-linear <a href="#anova2">two-way ANOVA model</a>. Let’s get started…</p>
+<h2><span class="header-section-number">7.2</span> 列联表</h2>
+<p>理论：作为 log 线性模型 The theory here will be a bit more convoluted, and I mainly write it up so that you can get the <em>feeling</em> that it really is just a log-linear <a href="#anova2">双因素方差分析 model</a>. Let’s get started…</p>
 <p>For a two-way contingency table, the model of the count variable <span class="math inline">\(y\)</span> is a modeled using the marginal proportions of a contingency table. Why this makes sense, is too involved to go into here, but <a href="https://www.uni-tuebingen.de/fileadmin/Uni_Tuebingen/SFB/SFB_833/A_Bereich/A1/Christoph_Scheepers_-_Statistikworkshop.pdf">see the relevant slides by Christoph Scheepers here</a> for an excellent exposition. The model is composed of a lot of counts and the regression coefficients <span class="math inline">\(A_i\)</span> and <span class="math inline">\(B_i\)</span>:</p>
 <p><span class="math inline">\(y_i = N \cdot x_i(A_i/N) \cdot z_j(B_j/N) \cdot x_{ij}/((A_i x_i)/(B_j z_j)/N)\)</span></p>
 <p>What a mess!!! Here, <span class="math inline">\(i\)</span> is the row index, <span class="math inline">\(j\)</span> is the column index, <span class="math inline">\(x_{something}\)</span> is the sum of that row and/or column, <span class="math inline">\(N = sum(y)\)</span>. Remember that <span class="math inline">\(y\)</span> is a count variable, so <span class="math inline">\(N\)</span> is just the total count.</p>
@@ -1460,10 +1455,9 @@ c = glm(counts ~ mood, data = D, family = poisson())</code></pre>
 <p><span class="math inline">\(y_i = N \cdot \alpha_i \cdot \beta_j \cdot \alpha_i\beta_j\)</span></p>
 <p>Ah, much prettier. However, there is still lot’s of multiplication which makes it hard to get an intuition about how the actual numbers interact. We can make it much more intelligible when we remember that <span class="math inline">\(log(A \cdot B) = log(A) + log(B)\)</span>. Doing logarithms on both sides, we get:</p>
 <p><span class="math inline">\(log(y_i) = log(N) + log(\alpha_i) + log(\beta_j) + log(\alpha_i\beta_j)\)</span></p>
-<p>Snuggly! Now we can get a better grasp on how the regression coefficients (which are proportions) independently contribute to <span class="math inline">\(y\)</span>. This is why logarithms are so nice for proportions. Note that this is just <a href="#anova2">the two-way ANOVA model</a> with some logarithms added, so we are back to our good old linear models - only the interpretation of the regression coefficients have changed! And we cannot use <code>lm</code> anymore in R.</p>
-</div>
-<div id="example-data-2" class="section level3">
-<h3><span class="header-section-number">7.2.2</span> Example data</h3>
+<p>Snuggly! Now we can get a better grasp on how the regression coefficients (which are proportions) independently contribute to <span class="math inline">\(y\)</span>. This is why logarithms are so nice for proportions. Note that this is just <a href="#anova2">the 双因素方差分析 model</a> with some logarithms added, so we are back to our good old linear models - only the interpretation of the regression coefficients have changed! And we cannot use <code>lm</code> anymore in R.</p>
+<div id="section-13" class="section level3">
+<h3><span class="header-section-number">7.2.1</span> 示例数据</h3>
 <p>Here we need some long data and we need it in table format for <code>chisq.test</code>:</p>
 <pre class="r"><code># Contingency data in long format for linear model
 D = data.frame(
@@ -1486,9 +1480,9 @@ D$sex_male = ifelse(D$sex == &#39;male&#39;, 1, 0)</code></pre>
 <div id="htmlwidget-2c000993e7ae8e6e127e" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-2c000993e7ae8e6e127e">{"x":{"filter":"none","data":[["happy","happy","meh","meh","sad","sad"],["male","female","male","female","male","female"],[100,70,30,32,110,120],[1,1,0,0,0,0],[0,0,1,1,0,0],[1,0,1,0,1,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>mood<\/th>\n      <th>sex<\/th>\n      <th>Freq<\/th>\n      <th>mood_happy<\/th>\n      <th>mood_meh<\/th>\n      <th>sex_male<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"lengthChange":false,"ordering":false,"autoWidth":true,"bPaginate":false,"bInfo":false,"paging":false,"columnDefs":[{"className":"dt-right","targets":[2,3,4,5]}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="r-code-chi-square-test" class="section level3">
-<h3><span class="header-section-number">7.2.3</span> R code: Chi-square test</h3>
-<p>Now let’s show the equivalence between a chi-square model and a log-linear model. This is very similar to our <a href="#anova2">two-way ANOVA</a> above:</p>
+<div id="r-chi-square-test" class="section level3">
+<h3><span class="header-section-number">7.2.2</span> R 代码：Chi-square test</h3>
+<p>Now let’s show the equivalence between a chi-square model and a log-linear model. This is very similar to our <a href="#anova2">双因素方差分析</a> above:</p>
 <pre class="r"><code># Built-in chi-square. It requires matrix format.
 a = chisq.test(D_table)
 
@@ -1618,7 +1612,7 @@ d = MASS::loglm(Freq ~ mood + sex, D)</code></pre>
 <ol style="list-style-type: decimal">
 <li><p><em><a href="#dummy">Dummy coding</a> of categories:</em> How one regression coefficient for each level of a factor models an intercept for each level when multiplied by a binary indicator. This is just extending what we did in 2.1. to make this data accessible to linear modeling.</p></li>
 <li><p><em>Means of one variable:</em> <a href="#anova1">One-way ANOVA</a>.</p></li>
-<li><p><em>Means of two variables:</em> <a href="#anova2">Two-way ANOVA</a>.</p></li>
+<li><p><em>Means of two variables:</em> <a href="#anova2">双因素方差分析</a>.</p></li>
 </ol></li>
 <li><p><strong>Special case #3: Three or more proportions (Chi-Square)</strong></p>
 <ol style="list-style-type: decimal">
@@ -1633,11 +1627,11 @@ d = MASS::loglm(Freq ~ mood + sex, D)</code></pre>
 </ol></li>
 </ol>
 </div>
-<div id="limitations" class="section level1">
-<h1><span class="header-section-number">10</span> Limitations</h1>
-<p>I have made a few simplifications for clarity:</p>
+<div id="section-14" class="section level1">
+<h1><span class="header-section-number">10</span> 限制</h1>
+<p>我有一些需要澄清的简化前提：</p>
 <ol style="list-style-type: decimal">
-<li><p>I have not covered assumptions in the examples. This will be another post! But all assumptions of all tests come down to the usual three: a) independence of data points, b) normally distributed residuals, and c) homoscedasticity.</p></li>
+<li><p>I have not covered assumptions in the examples. This will be another post! But all assumptions of all tests come down to the usual three: a) 数据点是独立的，b) 残差服从正态分布，c) 方差齐次性（homoscedasticity）。</p></li>
 <li><p>I assume that all null hypotheses are the absence of an effect, but everything works the same for non-zero null hypotheses.</p></li>
 <li><p>I have not discussed inference. I am only including p-values in the comparisons as a crude way to show the equivalences between the underlying models since people care about p-values. Parameter estimates will show the same equivalence. How to do <em>inference</em> is another matter. Personally, I’m a Bayesian, but going Bayesian here would render it less accessible to the wider audience. Also, doing <a href="https://en.wikipedia.org/wiki/Robust_statistics">robust models</a> would be preferable, but fail to show the equivalences.</p></li>
 <li><p>Several named tests are still missing from the list and may be added at a later time. This includes the Sign test (require large N to be reasonably approximated by a linear model), Friedman as RM-ANOVA on <code>rank(y)</code>, McNemar, and Binomial/Multinomial. See stuff on these in <a href="#links">the section on links to further equivalences</a>. If you think that they should be included here, feel free to submit “solutions” to <a href="https://github.com/lindeloev/tests-as-linear/">the github repo</a> of this doc!</p></li>

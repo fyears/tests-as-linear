@@ -1,5 +1,5 @@
 ---
-title: "Common statistical tests are linear models (or: how to teach stats)"
+title: "常见的统计检验是线性模型（或：如何教导统计学）"
 
 output: 
   html_document:
@@ -21,9 +21,9 @@ output:
 <link rel="stylesheet" type="text/css" href="include/hideOutput.css">
 <script src="include/hideOutput.js"></script>
 
-By Jonas Kristoffer Lindeløv ([blog](https://lindeloev.net), [profile](http://personprofil.aau.dk/117060)).<br />
-Last updated: `r format(Sys.time(), '%d %B, %Y')` (See [changelog](https://github.com/lindeloev/tests-as-linear/commits/master)).<br />
-Check out the [Python version](https://eigenfoo.xyz/tests-as-linear/) and the [Twitter summary](https://twitter.com/jonaslindeloev/status/1110907133833502721).
+作者：Jonas Kristoffer Lindeløv ([博客](https://lindeloev.net), [个人主页](http://personprofil.aau.dk/117060)).<br />
+最后更新日期：`r format(Sys.time(), '%d %B, %Y')` (见 [更新日志](https://github.com/lindeloev/tests-as-linear/commits/master))。<br />
+可查阅[Python 版本](https://eigenfoo.xyz/tests-as-linear/) 和 [Twitter 概况](https://twitter.com/jonaslindeloev/status/1110907133833502721).
 
 
 <!-- Social sharing. From simplesharebuttons.com -->
@@ -85,7 +85,7 @@ print_df = function(D,
 ```
 
 
-This document is summarised in the table below. It shows the linear models underlying common parametric and "non-parametric" tests. Formulating all the tests in the same language highlights the many similarities between them. Get it [as an image](linear_tests_cheat_sheet.png) or [as a PDF](linear_tests_cheat_sheet.pdf).
+此文档整理如下表。它展示了在常见的参数和“非参”检验之下的线性模型。在同一个框架下展示所有检验，表达出了它们之间的许多相似之处。获得[图片版本](linear_tests_cheat_sheet.png)或 [PDF 版本](linear_tests_cheat_sheet.pdf)。
 
 ***
 
@@ -94,14 +94,15 @@ This document is summarised in the table below. It shows the linear models under
 ***
 
 
-# The simplicity underlying common tests
-Most of the common statistical models (t-test, correlation, ANOVA; chi-square, etc.) are special cases of linear models or a very close approximation. This beautiful simplicity means that there is less to learn. In particular, it all comes down to $y = a \cdot x + b$ which most students know from highschool. Unfortunately, stats intro courses are usually taught as if each test is an independent tool, needlessly making life more complicated for students and teachers alike. 
+# 常见检验的简洁本质
 
-This needless complexity multiplies when students try to rote learn the parametric assumptions underlying each test separately rather than deducing them from the linear model.
+大部分常见统计模型（t 检验、相关性、方差分析（ANOVA）、卡方，等等）都是线性模型的特殊形式，或者是很接近的近似行是。这漂亮的简洁性，意味着我们需要学习更少东西。特别地，这都来源于大部分学生从高中就学习的模型：$y = a \cdot x + b$。不幸地，统计入门课程通常把各种检验教导魏独立的工具，更不要提它们对学生和教师生活所增加的复杂性了。
 
-For this reason, I think that teaching linear models first and foremost and *then* name-dropping the special cases along the way makes for an excellent teaching strategy, emphasizing *understanding* over rote learning. Since linear models are the same across frequentist, Bayesian, and permutation-based inferences, I'd argue that it's better to start with modeling than p-values, type-1 errors, Bayes factors, or other inferences.
+当学生想分别学习每一个检验背后的参数假设的时候，相比于从线性模型进行推导，教材里多余的复杂性变得更为复杂。
 
-Concerning the teaching of *"non-parametric"* tests in intro-courses, I think that we can justify [lying-to-children](https://en.wikipedia.org/wiki/Lie-to-children) and teach "non-parametric"" tests as if they are merely ranked versions of the corresponding parametric tests. It is much better for students to think "ranks!" than to believe that you can magically throw away assumptions. Indeed, the Bayesian equivalents of "non-parametric"" tests implemented in [JASP](https://jasp-stats.org) [literally just do (latent) ranking](https://arxiv.org/abs/1712.06941) and that's it. For the frequentist "non-parametric"" tests considered here, this approach is highly accurate for N > 15.
+因此，我认为，先教导线性模型和扩展，*然后* 对于一些特殊形式进行“改名”，这种方式是一种优秀的教导策略，并且有助于更深刻地 *理解* 假设检验。因为线性模型在频率学派、贝叶斯学派、基于置换的推断之间，都是相同的。我认为从模型开始，比从 p 值、第 1 类错误、贝叶斯因子、或其它东西开始，更为友好。
+
+当考虑到在入门课程教授 *“非参”* 检验的时候，我认为我们可以修改“[向儿童欺骗](https://en.wikipedia.org/wiki/Lie-to-children)”，并且教导学生“非参”检验其实就是和秩相关的参数检验。对学生来说，思考“秩！”，更优于相信你可以魔术般地扔掉各种假设。实际上，在 [JASP](https://jasp-stats.org/) 里，“非参”检验的贝叶斯等价模型，确实[就是使用（隐）秩](https://arxiv.org/abs/1712.06941)来实现的。这里讨论的频率学派的“非参”检验，对于 N > 15 的情况来说非常精确。
 
 <center>
 ![](https://www.picsellmedia.com/wp-content/uploads/2017/01/shutterstock_336913772.jpg)
@@ -109,11 +110,12 @@ Concerning the teaching of *"non-parametric"* tests in intro-courses, I think th
 
 <br />
 
-Use the menu to jump to your favourite section. There are links to lots of similar (though more scattered) stuff under [sources](#links) and [teaching materials](#course). I hope that you will join in suggesting improvements or submitting improvements yourself in [the Github repo to this page](https://github.com/lindeloev/tests-as-linear). Let's make it awesome!
+使用导航栏来跳转到你最喜欢的章节。在[来源](#links)和[教材](#course)两章，有很多类似（尽管更为散乱）的材料。我希望你们可以一起来提供优化建议，或者直接在[Github](https://github.com/lindeloev/tests-as-linear)提交修改。让我们一起来使本文章变得更棒！
 
+# 设置和示例数据
 
-# Settings and toy data
-Unfold this if you want to see functions and other settings for this notebook:
+如果你想查看函数和本笔记的其它设置的话，可以展开这片代码查看：
+
 <div class='fold s'>
 ```{r, message=FALSE, warning=FALSE, results='hide'}
 # Load packages for data handling and plotting
@@ -167,7 +169,7 @@ theme_axis = function(P,
 </div>
 
 
-For a start, we'll keep it simple and play with three standard normals in wide (`a`, `b`, `c`) and long format (`value`, `group`):
+作为开始，我们保持简单，使用三组正态分布数据，且整理为宽（`a`、`b`、`c`）和长（`value`、`group`）格式：
 ```{r}
 # Wide format (sort of)
 #y = rnorm_fixed(50, mu=0.3, sd=2)  # Almost zero mean.
@@ -181,15 +183,16 @@ group = rep(c('y1', 'y2'), each = 50)
 ```
 
 
-# Pearson and Spearman correlation {#correlation}
-### Theory: As linear models
-Model: the recipe for $y$ is a slope ($\beta_1$) times $x$ plus an intercept ($\beta_0$, aka a straight line).
+# Pearson 相关性和 Spearman 相关性 {#correlation}
+### 理论：作为线性模型
+
+模型：$y$ 的形式是一个斜率（$\beta_1$）乘以 $x$ 加上一个截距（$\beta_0$，也就是一条直线）。
 
 $y = \beta_0 + \beta_1 x \qquad \mathcal{H}_0: \beta_1 = 0$
 
-... which is a math-y way of writing the good old $y = ax + b$ (here ordered as $y = b + ax$). In R we are lazy and write `y ~ 1 + x` which R reads like `y = 1*number + x*othernumber` and the task of t-tests, lm, etc., is simply to find the numbers that best predict $y$.
+以上模型，实际上是我们熟悉的旧公式 $y = ax + b$ （这里书写顺序变为 $y = b + ax$）的一个“更数学的”表达。R 里面，我们比较懒，所以写成了 `y ~ 1 + x`，R 对此理解为 `y = 1*数 + x*另一个数`，而且，t 检验，线性回归，等等......，都只是去寻找能够最好地预测 $y$ 的数字。
 
-Either way you write it, it's an intercept ($\beta_0$) and a slope ($\beta_1$) yielding a straight line:
+无论你怎么书写，截距（$\beta_0$）和斜率（$\beta_1$）都产生了一条直线： 
 
 <div class="fold s">
 ```{r}
@@ -215,16 +218,15 @@ theme_axis(P_pearson, legend.position = c(0.4, 0.9))
 ```
 </div>
 
+这通常被称为 **回归** 模型，而且当右边有多个 $\beta$ 和自变量相乘的时候，它被扩展为 **多元回归**。以下的所有模型，从[单样本 t 检验](#t1)到[双因素方差分析](#anova2)，都只是这个设定下的特殊形式。不多不少。
 
-This is often simply called a **regression** model which can be extended to **multiple regression** where there are several $\beta$s and on the right-hand side multiplied with the predictors. Everything below, from [one-sample t-test](#t1) to [two-way ANOVA](#anova2) are just special cases of this system. Nothing more, nothing less.
-
-As the name implies, the **Spearman rank correlation** is a **Pearson correlation** on rank-transformed $x$ and $y$:
+正如它名字所示意的，**Spearman 秩相关系数** 就是 $x$ 和 $y$ 的秩变换后的 **Pearson 相关系数**：
 
 $rank(y) = \beta_0 + \beta_1 \cdot rank(x) \qquad \mathcal{H}_0: \beta_1 = 0$
 
-I'll introduce [ranks](#rank) in a minute. For now, notice that the correlation coefficient of the linear model is identical to a "real" Pearson correlation, but p-values are an approximation which is is [appropriate for samples greater than N=10 and almost perfect when N > 20](simulations/simulate_spearman.html).
+很快我就会介绍[秩](#rank)这一个概念。现在，注意到线性模型的相关系数就是等价于“真正的” Pearson 相关系数，但是 p 值是近似值，[这个近似值适用于 N>10，并且在 N > 20 的情况下差别极少](simulations/simulate_spearman.html)。
 
-Such a nice and non-mysterious equivalence that many students are left unaware of! Visualizing them side by side including data labels, we see this rank-transformation in action:
+很多学生都没有意识到这么漂亮和神奇的等价关系！对它们带上数据标签来可视化，我们可立刻看到这一秩转换过程：
 
 <div class="fold s">
 ```{r, fig.width=8, figh.height=7}
@@ -247,21 +249,22 @@ P_spearman = ggplot(D_correlation, aes(x=rank(X1), y=rank(X2))) +
 </div>
 
 
-### Theory: rank-transformation {#rank}
+### 理论：秩转换 {#rank}
 
-`rank` simply takes a list of numbers and "replace" them with the integers of their rank (1st smallest, 2nd smallest, 3rd smallest, etc.). So the result of the rank-transformation `rank(c(3.6, 3.4, -5.0, 8.2))` is `3, 2, 1, 4`. See that in the figure above? 
+`秩（rank）`意思是对于一串数字，使用它们的排序号来“替换”它们（第 1 最小的，第 2 最小的，第 3 最小的，......）。因此 `rank(c(3.6, 3.4, -5.0, 8.2))` 的秩转换结果是 `3, 2, 1, 4`。见到以上图像了吗？ 
 
-A *signed* rank is the same, just where we rank according to absolute size first and then add in the sign second. So the signed rank here would be `2, 1, -3, 4`. Or in code:
+“符号”秩是相同的，除了我们先根据绝对值排序，再添加上符号。所以以上的符号秩是 `2, 1, -3, 4`。或者用代码表达：
 
 ```{r}
 signed_rank = function(x) sign(x) * rank(abs(x))
 ```
 
-I hope I don't offend anyone when I say that ranks are easy; yet it's all you need to do to convert most parametric tests into their "non-parametric" counterparts! One interesting implication is that *many "non-parametric tests" are about as parametric as their parametric counterparts with means, standard deviations, homogeneity of variance, etc. - just on rank-transformed data*. That's why I put "non-parametric" in quotation marks.
+我希望我说秩很容易理解的时候没有得罪任何人；然而，这就是你转换大部分参数检验到它们的对应“非参”检验所要做的所有事情！一个重要的推论是，*很多“非参”检验和它们的对应参数检验版本都有一致的参数：均值、标准差、方差齐次性，等等 ---- 区别在于它们是在秩转换后的数据上计算的*。这是为什么我把“非参”用引号包起来。
 
 
-### R code: Pearson correlation
-It couldn't be much simpler to run these models in R. They yield identical `p` and `t`, but there's a catch: `lm` gives you the *slope* and even though that is usually much more interpretable and informative than the *correlation coefficient* *r*, you may still want *r*. Luckily, the slope becomes `r` if `x` and `y` have identical standard deviations. For now, we will use `scale(x)` to make $SD(x) = 1.0$ and $SD(y) = 1.0$:
+### R 代码：Pearson 相关系数
+
+在 R 里运行这些模型再容易不过了。它们产生相同的 `p` 和 `t`，但是这里有个问题：`lm` 返回 *斜率*，尽管它通常比 *相关系数* *r* 更容易理解和反映了更多信息，你依然想得到 *r* 值。幸运地，如果 `x` 和 `y` 有相同的标准差，斜率就会变成 `r`。现在，我们使用 `scale(x)` 使得 $SD(x) = 1.0$ and $SD(y) = 1.0$：
 
 
 ```{r}
@@ -270,7 +273,7 @@ b = lm(y ~ 1 + x) # Equivalent linear model: y = Beta0*1 + Beta1*x
 c = lm(scale(y) ~ 1 + scale(x))  # On scaled vars to recover r
 ```
 
-Results:
+结果：
 ```{r, echo=FALSE}
 at = tidy(a)
 bt = tidy(b)[2,]  # Only slope
@@ -298,13 +301,14 @@ summary(c)
 ```
 </div>
 
-The CIs are not exactly identical, but very close.
+置信区间没有完全一致，但是非常相近。
 
 
-### R code: Spearman correlation
-Note that we can interpret the slope which is the number of ranks $y$ change for each rank on $x$. I think that this is a pretty interesting number. However, the intercept is less interpretable since it lies at $rank(x) = 0$ which is impossible since x starts at 1.
+### R 代码：Spearman 相关系数
 
-See the identical `r` (now "rho") and `p`:
+注意，我们可以把斜率解释为：对于每一 $x$ 的秩的变化，所获得的相应 $y$ 的秩的变化。我认为这个数字非常有趣。然而，截距更难解释，因为它定义在 $rank(x) = 0$ 的时候，然而这不可能，因为 x 是从 1 开始的。
+
+查看相同的 `r` (now "rho") 和 `p`：
 
 ```{r, results='hold'}
 # Spearman correlation
@@ -312,7 +316,7 @@ a = cor.test(y, x, method = "spearman") # Built-in
 b = lm(rank(y) ~ 1 + rank(x)) # Equivalent linear model
 ```
 
-Let's look at the results:
+让我们看一下结果：
 ```{r, echo=FALSE}
 df = data.frame(
   model = c('cor.test', 'lm'),
@@ -330,20 +334,20 @@ summary(b)
 </div>
 
 
-# One mean
-## One sample t-test and Wilcoxon signed-rank {#t1}
-### Theory: As linear models
-**t-test** model: A single number predicts $y$.
+# 单均值
+## 单样本 t 检验和 Wilcoxon 符号秩检验 {#t1}
+### 理论：作为线性模型
+**t 检验** 模型：单独一个数字来预测 $y$。
 
 $y = \beta_0 \qquad \mathcal{H}_0: \beta_0 = 0$
 
-In other words, it's our good old $y = \beta_0 + \beta_1*x$ where the last term is gone since there is no $x$ (essentially $x=0$, see left figure below).
+换句话说，这是我们所熟悉的 $y = \beta_0 + \beta_1*x$，其中最后一项消失了，因为 $x$ 不存在了（等价地，$x=0$。见下方左图）。
 
-The same is to a very close approximately true for **Wilcoxon signed-rank test**, just with the [signed ranks](#rank) of $y$ instead of $y$ itself (see right panel below).
+以上模型，一旦用 $y$ 的[符号秩](#rank)来替换了 $y$ 本身（见下方右图），就和 **Wilcoxon 符号秩检验** 非常相近。
 
 $signed\_rank(y) = \beta_0$
 
-[This approximation is good enough when the sample size is larger than 14 and almost perfect if the sample size is larger than 50](simulations/simulate_wilcoxon.html).
+[这个近似对于样本量大于 14 的情况已足够好，对于大于 50 的情况下接近完美](simulations/simulate_wilcoxon.html)。
 
 <div class="fold s">
 ```{r fig.width=7, fig.height=5}
@@ -376,8 +380,8 @@ theme_axis(P_t1, ylim = c(-1, 2), legend.position = c(0.6, 0.1)) +
 </div>
 
 
-### R code: One-sample t-test
-Try running the R code below and see that the linear model (`lm`) produces the same $t$, $p$, and $r$ as the built-in `t.test`. The confidence interval is not presented in the output of `lm` but is also identical if you use `confint(lm(...))`:
+### R 代码：单样本 t 检验
+尝试运行以下 R 代码，确认线性模型（`lm`）和内置的 `t.test` 产生相同的 $t$、$p$、$r$。`lm` 的输出没有置信区间，但是你可以用 `confint(lm(...))` 来确认结果也是相同的：
 
 ```{r}
 # Built-in t-test
@@ -387,7 +391,7 @@ a = t.test(y)
 b = lm(y ~ 1)
 ```
 
-Results:
+结果：
 
 ```{r, echo=FALSE}
 df = data.frame(
@@ -411,8 +415,8 @@ summary(b)
 
 
 
-### R code: Wilcoxon signed-rank test
-In addition to matching `p`-values, `lm` also gives us the mean signed rank, which I find to be an informative number.
+### R 代码：Wilcoxon 符号秩检验
+除了一致的 `p` 值，`lm` 也提供了符号秩均值，我发现这个数字非常有信息量。
 
 ```{r, results='hold'}
 # Built-in
@@ -425,7 +429,7 @@ b = lm(signed_rank(y) ~ 1)  # See? Same model as above, just on signed ranks
 c = t.test(signed_rank(y))
 ```
 
-Results:
+结果：
 
 ```{r, echo=FALSE}
 df = data.frame(
@@ -446,13 +450,13 @@ c
 
 
 
-## Paired samples t-test and Wilcoxon matched pairs {#tpair}
-### Theory: As linear models
-**t-test** model: a single number (intercept) predicts the pairwise differences.
+## 配对样本 t 检验和 Wilcoxon 配对组检验 {#tpair}
+### 理论：作为线性模型
+**t 检验**模型：一个数字（截距）来预测组间之差。
 
 $y_2-y_1 = \beta_0 \qquad \mathcal{H}_0: \beta_0 = 0$
 
-This means that there is just one $y = y_2 - y_1$ to predict and it becomes a [one-sample t-test](#t1) on the pairwise differences. The visualization is therefore also the same as for the one-sample t-test. At the risk of overcomplicating a simple substraction, you can think of these pairwise differences as slopes (see left panel of the figure), which we can represent as y-offsets (see right panel of the figure):
+这意味着只有一个 $y = y_2 - y_1$ 需要预测，而且它变成了对于组间之差的[单样本 t 检验](#t1)。因此可视化效果和单样本 t 检验是相同的。冒着过度复杂化简单作差的风险，你可以认为这些组间之差是斜率（见图的左半部分），我们也可以用 y 的差来表达（见图的右半部分）：
 
 <div class="fold s">
 ```{r, fig.width=7, fig.height=3}
@@ -475,19 +479,18 @@ theme_axis(P_tpaired) + theme_axis(P_t1, legend.position = c(0.6, 0.1))
 ```
 </div>
 
-
-Similarly, the **Wilcoxon matched pairs** only differ from **Wilcoxon signed-rank** in that it's testing the signed ranks of the pairwise $y-x$ differences.
+相似地，**Wilcoxon 配对组** 和 **Wilcoxon 符号秩** 的唯一差别，就是它是对配对的 $y-x$ 差的符号秩进行检验。
 
 $signed\_rank(y_2-y_1) = \beta_0 \qquad \mathcal{H}_0: \beta_0 = 0$
 
 
-### R code: Paired sample t-test
+### R 代码：配对样本 t 检验
 ```{r, results='hold'}
 a = t.test(y, y2, paired = TRUE) # Built-in paired t-test
 b = lm(y - y2 ~ 1) # Equivalent linear model
 ```
 
-Results:
+结果：
 
 ```{r, echo=FALSE}
 df = data.frame(
@@ -511,8 +514,9 @@ summary(b)
 </div>
 
 
-### R code: Wilcoxon matched pairs
-Again, we do the signed-ranks trick. This is still an approximation, but a close one:
+### R 代码：Wilcoxon 配对组检验
+
+我们再一次运用符号秩转换技巧。这依然是近似值，但是非常接近：
 
 ```{r, results='hold'}
 # Built-in Wilcoxon matched pairs
@@ -525,7 +529,7 @@ b = lm(signed_rank(y - y2) ~ 1)
 c = t.test(signed_rank(y - y2))
 ```
 
-Results:
+结果：
 
 ```{r, echo=FALSE}
 # Print nicely
@@ -546,31 +550,31 @@ c
 ```
 </div>
 
-For large sample sizes (N >> 100), this approaches the **sign test** to a reasonable degree, but this approximation is too inaccurate to flesh out here.
+对于大样本量（N >> 100），这计算方式某种程度上比较接近 **符号检验**。但是本例子中这种近似效果较差。
 
+# 双均值
 
-# Two means
-
-## Independent t-test and Mann-Whitney U {#t2}
-### Theory: As linear models
-Independent t-test model: two means predict $y$.
+## 独立 t 检验和 Mann-Whitney U 检验 {#t2}
+### 理论：作为线性模型
+独立 t 检验模型：两个均值来预测 $y$。
 
 $y_i = \beta_0 + \beta_1 x_i \qquad \mathcal{H}_0: \beta_1 = 0$
 
-where $x_i$ is an indicator (0 or 1) saying whether data point $i$ was sampled from one or the other group. [Indicator variables (also called "dummy coding")](https://en.wikipedia.org/wiki/Dummy_variable_(statistics)) underly a lot of linear models and we'll take an aside to see how it works in a minute.
+上式中，$x_i$ 是示性变量（0 或 1），用于示意数据点 $i$ 是从一个组里采样还是另一个组里采样的。[示性变量（indicator variable，dummy coding）](https://en.wikipedia.org/wiki/Dummy_variable_(statistics)) 存在于很多线性模型当中，我们很快就会看到它有什么用途。
 
-**Mann-Whitney U** (also known as **Wilcoxon rank-sum test** for two independent groups; no *signed* rank this time) is the same model to a very close approximation, just on the ranks of $x$ and $y$ instead of the actual values:
+**Mann-Whitney U 检验**（也被称为对两个独立组的 **Wilcoxon 秩和检验**；这次没有 *符号* 秩了）是有着非常接近的近似的相同模型，除了它不是在原有值而是在 $x$ 和 $y$ 的秩上计算的：
 
 $rank(y_i) = \beta_0 + \beta_1 x_i \qquad \mathcal{H}_0: \beta_1 = 0$
 
-To me, equivalences like this make "non-parametric" statistics much easier to understand. The approximation is appropriate [when the sample size is larger than 11 in each group and virtually perfect when N > 30 in each group](simulations/simulate_mannwhitney.html).
+对我来说，这种等价性使得“非参”统计量更为容易地理解了。这种近似[在每个组样本量大于 11 的时候比较合适，在每个组样本量大于 30 的时候视觉效果上相当完美](simulations/simulate_mannwhitney.html).
 
-### Theory: Dummy coding {#dummy}
-Dummy coding can be understood visually. The indicator is on the x-axis so data points from the first group are located at $x = 0$ and data points from the second group is located at $x = 1$. Then $\beta_0$ is the intercept (blue line) and $\beta_1$ is the slope between the two means (red line). Why? Because when $\Delta x = 1$ the slope equals the difference because:
+### 理论：示性变量 {#dummy}
+
+示性变量可以用图像辅助理解。这个变量在 x 轴，所以第一个组的数据点位于 $x = 0$，第二个组的位于 $x = 1$。然后 $\beta_0$ 是截距（蓝线），$\beta_1$ 是两个均值之间的斜率（红线）。为什么？因为当 $\Delta x = 1$ 的时候，斜率等于相差值：
 
 $slope = \Delta y / \Delta x = \Delta y / 1 = \Delta y = difference$
 
-Magic! Even categorical differences can be modelled using linear models! It's a true Swizz army knife.
+奇迹啊！即使类别之间的差值也可以用线性模型来表达！这真的是一把瑞士军刀。
 
 <div class="fold s">
 ```{r}
@@ -595,22 +599,23 @@ theme_axis(P_t2, jitter = TRUE, xlim = c(-0.3, 2), legend.position = c(0.53, 0.0
 </div>
 
 
-### Theory: Dummy coding (continued) {#dummy2}
-If you feel like you get dummy coding now, just skip ahead to the next section. Here is a more elaborate explanation of dummy coding:
+### 理论：示性变量（后续） {#dummy2}
 
-If a data point was sampled from the first group, i.e., when $x_i = 0$, the model simply becomes $y = \beta_0 + \beta_1 \cdot 0 = \beta_0$. In other words, the model predicts that that data point is $beta_0$. It turns out that the $\beta$ which best predicts a set of data points is the *mean* of those data points, so $\beta_0$ is the mean of group 1.
+如果你觉得你理解了示性变量了，可以直接跳到下一章节。这里是对示性变量更为详细的解释：
 
-On the other hand, data points sampled from the second group would have $x_i = 1$ so the model becomes $y_i = \beta_0 + \beta_1\cdot 1 = \beta_0 + \beta_1$. In other words, we add $\beta_1$ to "shift" from the mean of the first group to the mean of the second group. Thus $\beta_1$ becomes the *mean difference* between the groups.
+如果数据点采样自第一个组，即，$x_i = 0$，模型就会变成 $y = \beta_0 + \beta_1 \cdot 0 = \beta_0$。换句话说，模型预测数据的值是 $beta_0$。这意味着作为一堆数据点的最好的预测，$\beta$ 是这些数据点的 *均值*，所以 $\beta_0$ 是第 1 组的均值。
 
-As an example, say group 1 is 25 years old ($\beta_0 = 25$) and group 2 is 28 years old ($\beta_1 = 3$), then the model for a person in group 1 is $y = 25 + 3 \cdot 0 = 25$ and the model for a person in group 2 is $y = 25 + 3 \cdot 1 = 28$. 
+另一方面，采样自第二个组的数据点有 $x_i = 1$，所以模型变成了 $y_i = \beta_0 + \beta_1\cdot 1 = \beta_0 + \beta_1$。换句话说，我们加上了 $\beta_1$，从第一组的均值移动到了第二组的均值。所以 $\beta_1$ 成为了两个组的 *均值之差*。
 
-Hooray, it works! For first-timers it takes a few moments to understand dummy coding, but you only need to know addition and multiplication to get there!
+举个例子，假设第 1 组人是 25 岁（$\beta_0 = 25$），第 2 组人 28 岁（$\beta_1 = 3$），那么对于第 1 组的人的模型是 $y = 25 + 3 \cdot 0 = 25$，第 2 组的人的模型是 $y = 25 + 3 \cdot 1 = 28$。
 
+呼，搞定！对于新来者，理解示性变量需要一些时间，但是你只需要懂得加法和乘法就能上手了！
 
-### R code: independent t-test
-As a reminder, when we write `y ~ 1 + x` in R, it is shorthand for $y = \beta_0 \cdot 1 + \beta_1 \cdot x$ and R goes on computing the $\beta$s for you. Thus `y ~ 1 + x` is the R-way of writing $y = a \cdot x + b$.
+### R 代码：独立 t 检验
 
-Notice the identical `t`, `df`, `p`, and estimates. We can get the confidence interval by running `confint(lm(...))`.
+提醒一下，当我们在 R 里写 `y ~ 1 + x`，它是 $y = \beta_0 \cdot 1 + \beta_1 \cdot x$ 的简写，R 会为你计算 $\beta$ 值。因此，`y ~ 1 + x` 是 R 里面表达 $y = a \cdot x + b$ 的形式。
+
+注意相等的 `t`、`df`、`p`和估计值。我们可以用 `confint(lm(...))` 获得置信区间。
 
 ```{r, results='hold'}
 # Built-in independent t-test on wide data
@@ -625,7 +630,7 @@ b = lm(value ~ 1 + group_y2)  # Using our hand-made dummy regressor
 c = lm(value ~ 1 + I(group == 'y2'))
 ```
 
-Results:
+结果：
 
 ```{r, echo=FALSE}
 # Put it together. Note that the signs are inversed for t.test.
@@ -654,7 +659,7 @@ summary(c)
 
 
 
-### R code: Mann-Whitney U
+### R 代码：Mann-Whitney U 检验
 ```{r, results='hold'}
 # Wilcoxon / Mann-Whitney U
 a = wilcox.test(y, y2)
@@ -682,8 +687,8 @@ summary(b)
 
 
 
-## Welch's t-test {#welch}
-This is identical to the (Student's) [independent t-test](#t2) above except that Student's assumes identical variances and **Welch's t-test** does not. So the linear model is the same but we model one variance per group. We can do this using the `nlme` package ([see more details here](https://stats.stackexchange.com/questions/142685/equivalent-to-welchs-t-test-in-gls-framework)):
+## Welch t 检验 {#welch}
+这等价于以上（学生）[独立 t 检验](#t2)，除了学生 t 检验假设同方差，而 **Welch t 检验** 没有这个假设。所以线性模型是相同的，但是我们对每一个组指定一个方差。我们可用 `nlme` 包（[查阅细节](https://stats.stackexchange.com/questions/142685/equivalent-to-welchs-t-test-in-gls-framework)）：
 
 ```{r, results='hold'}
 # Built-in
@@ -693,7 +698,7 @@ a = t.test(y, y2, var.equal=FALSE)
 b = nlme::gls(value ~ 1 + group_y2, weights = nlme::varIdent(form=~1|group), method="ML")
 ```
 
-Results:
+结果：
 
 
 ```{r, echo=FALSE}
@@ -716,18 +721,19 @@ summary(b)
 </div>
 
 
-# Three or more means
-ANOVAs are linear models with (only) categorical predictors so they simply extend everything we did above, relying heavily on dummy coding. Do make sure to read [the section on dummy coding](#dummy) if you haven't already.
+# 三个或多个均值
 
-## One-way ANOVA and Kruskal-Wallis {#anova1}
-### Theory: As linear models
-Model: One mean for each group predicts $y$.
+ANOVA 是（只）有类别自变量的线性模型，所以它们可以简单地扩展我们上述的所有模型，并重度依赖示性变量。如果你还没准备好，确保去阅读[示性变量一节](#dummy)。
+
+## 单因素方差分析（one-way ANOVA）和 Kruskal-Wallis 检验 {#anova1}
+### 理论：作为线性模型
+模型：每组一个均值来预测 $y$。
 
 $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 +... \qquad \mathcal{H}_0: y = \beta_0$
 
-where $x_i$ are indicators ($x=0$ or $x=1$) where at most one $x_i=1$ while all others are $x_i=0$. 
+其中 $x_i$ 是示性变量（$x=0$ 或 $x=1$），且最多只有一个 $x_i=1$ 且其余 $x_i=0$。 
 
-Notice how this is just "more of the same" of what we already did in other models above. When there are only two groups, this model is $y = \beta_0 + \beta_1*x$, i.e. the [independent t-test](#t2). If there is only one group, it is $y = \beta_0$, i.e. the [one-sample t-test](#t1). This is easy to see in the visualization below - just cover up a few groups and see that it matches the other visualizations above.
+注意这和我们已做的其它模型“有很大的相同之处”。如果只有两个组，这个模型就是 $y = \beta_0 + \beta_1*x$，即[独立 t 检验](#t2)。如果只有一个组，这就是 $y = \beta_0$，即 [单样本 t 检验](#t1)。从可视化中可以很容易地看出来 ---- 只要遮盖掉一些组然后看看图像是否对上了其它可视化结果。
 
 <div class="fold s">
 ```{r}
@@ -764,17 +770,18 @@ theme_axis(P_anova1, xlim = c(-0.5, 4), legend.position = c(0.7, 0.1))
 ```
 </div>
 
-A one-way ANOVA has a log-linear counterpart called [goodness-of-fit](#goodness) test which we'll return to. By the way, since we now regress on more than one $x$, the one-way ANOVA is a **multiple regression** model.
+单因素方差分析有一个 log 线性版本，称为[拟合优度](#goodness)检验，我们稍后会讲到。顺便一说，因为我们现在对多个 $x$ 进行回归，因此单因素方差分析是 **多元回归** 模型。
 
-The **Kruskal-Wallis** test is simply a **one-way ANOVA** on the rank-transformed $y$ (`value`):
+**Kruskal-Wallis** 检验只是对于秩转换的 $y$（`value`）的 **单因素方差分析**：
 
 $rank(y) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 +...$
 
-This approximation is [good enough for 12 or more data points](simulations/simulate_kruskall.html). Again, if you do this for just one or two groups, we're already acquainted with those equations, i.e. the [Wilcoxon signed-rank test](#t1) or the [Mann-Whitney U test](#t2) respectively. 
+这个近似[在 12 或更多数据点时候已经近似得足够好](simulations/simulate_kruskall.html)。同样，如果你对一个或两个组做这个检验，我们已经有对应等式，分别为 [Wilcoxon 符号秩检验](#t1) 或 [Mann-Whitney U 检验](#t2)。 
 
 
-### Example data
-We make a three-level factor with the levels `a`, `b`, and `c` so that the **one-way ANOVA** basically becomes a "three-sample t-test". Then we manually do the [dummy coding](#dummy) of the groups.
+### 示例数据
+
+我们创建可能取值为 `a`、`b`、`c` 的类别变量，那么 **单因素方差分析** 基本上成为了“三样本 t 检验”。我们手动对每个组创建[示性变量](#dummy)。
 
 ```{r}
 # Three variables in "long" format
@@ -794,11 +801,11 @@ D = data.frame(
 print_df(D, navigate=TRUE)
 ```
 
-With group a's intercept omni-present, see how exactly one other parameter is added to predict `value` for group b and c in a given row (scroll to he end). Thus data points in group b never affect the estimates in group c.
+伴随着组别 a 的截距全都展示了出来，我们看到每一行有且仅有另一个组 b 或组 c 的参数添加进去，用于预测 `value`（滑动到最后）。因此组 b 的数据点永远不会影响到组 c 的拟合值。
 
 
-### R code: one-way ANOVA
-OK, let's see the identity between a dedicated **ANOVA** function (`car::Anova`) and the dummy-coded in-your-face linear model in `lm`.
+### R 代码：单因素方差分析
+OK，我们来看看一个专用的 **方差分析** 函数（`car::Anova`）和手动创建示性变量的 `lm` 线性模型结果是否一致：
 
 
 ```{r, results='hold'}
@@ -807,7 +814,7 @@ a = car::Anova(aov(value ~ group, D))  # Dedicated ANOVA function
 b = lm(value ~ 1 + group_b + group_c, data = D)  # As in-your-face linear model
 ```
 
-Results:
+结果：
 
 ```{r, echo=FALSE}
 df = data.frame(
@@ -827,21 +834,22 @@ summary(b)
 ```
 </div>
 
-Actually, `car::Anova` and `aov` are wrappers around `lm` so the identity comes as no surprise. It only shows that the dummy-coded formula, which had a direct interpretation as a linear model, is the one that underlies the shorthand notation syntax `y ~ factor`. Indeed, the only real reason to use aov and `car::Anova` rather than `lm` is to get a nicely formatted ANOVA table.
-
-The default output of `lm` returns parameter estimates as well (bonus!), which you can see if you unfold the R output above. However, because this IS the ANOVA model, you can also get parameter estimates out into the open by calling `coefficients(aov(...))`.
-
-Note that I do not use the `aov` function because it computes type-I sum of squares, which is widely discouraged. There is a BIG polarized debate about whether to use type-II (as `car::Anova` does by default) or type-III sum of squares (set `car::Anova(..., type=3)`), but let's skip that for now.
+实际上，`car::Anova` 和 `aov` 就是 `lm` 包装而来的，所以相等结果一点都不令人感到意外。这只说明了，可直接理解为线性模型的示性变量公式，是缩写语法 `y ~ factor` 背后的模型。实际上，真正的唯一使用 `aov` 和 `car::Anova` 而不使用 `lm` 的原因，是为了得到一个优美格式化的方差分析表格。
 
 
-### R code: Kruskal-Wallis
+`lm` 的默认输出包含了参数估计结果（额外收获！），你可以将上述 R 代码展开来看。然而，因为它就是方差分析模型，你也可以用 `coefficients(aov(...))` 得到参数估计结果。
+
+注意，我没有使用 `aov` 函数，因为它计算了第 1 类平方和，这种计算方式很不受鼓励。围绕着使用第 2 类平方和（`car::Anova` 默认）还是第 3 类平方和（使用 `car::Anova(..., type=3)`）有着**很多**争论，但是我们这里略过不提。
+
+
+### R 代码：Kruskal-Wallis 检验
 ```{r, results='hold'}
 a = kruskal.test(value ~ group, D)  # Built-in
 b = lm(rank(value) ~ 1 + group_b + group_c, D)  # As linear model
 c = car::Anova(aov(rank(value) ~ group, D))  # The same model, using a dedicated ANOVA function. It just wraps lm.
 ```
 
-Results:
+结果：
 
 ```{r, echo=FALSE}
 df = data.frame(
@@ -862,11 +870,11 @@ c
 
 
 
-## Two-way ANOVA (plot in progress!) {#anova2}
-### Theory: As linear models
-Model: one mean per group (main effects) plus these means multiplied across factors (interaction effects). The main effects are the [one-way ANOVA](#anova1)s above, though in the context of a larger model. The interaction effect is harder to explain in the abstract even though it's just a few numbers multiplied with each other. I will leave that to the teachers to keep focus on equivalences here :-)
+## 双因素方差分析（two-way ANOVA）（待绘图） {#anova2}
+### 理论：作为线性模型
+Model: one mean per group (main effects) plus these means multiplied across factors (interaction effects). The main effects are the [单因素方差分析](#anova1)s above, though in the context of a larger model. The interaction effect is harder to explain in the abstract even though it's just a few numbers multiplied with each other. I will leave that to the teachers to keep focus on equivalences here :-)
 
-Switching to matrix notation:
+使用矩阵记号：
 
 $y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_1 X_2 \qquad \mathcal{H}_0: \beta_3 = 0$
 
@@ -905,8 +913,9 @@ theme_axis(P_anova2, xlim = c(-0.5, 3.5)) + theme(axis.text.x = element_text())
 </div>
 
 
-### R code: Two-way ANOVA
-Now let's turn to the actual modeling in R. We compare a dedicated ANOVA function (`car::Anova`; see [One-Way ANOVA](#anova1) why) to the linear model (`lm`). Notice that in ANOVA, we are testing a full factor interaction all at once which involves many parameters (two in this case), so we can't look at the overall model fit nor any particular parameter for the result. Therefore, I use a [likelihood-ratio test](https://en.wikipedia.org/wiki/Likelihood-ratio_test) to compare a full two-way ANOVA model ("saturated") to one without the interaction effect(s). The `anova` function does this test. Even though that looks like cheating, it's just computing likelihoods, p-values, etc. on the models that were already fitted, so it's legit!
+### R 代码：双因素方差分析
+
+Now let's turn to the actual modeling in R. We compare a dedicated ANOVA function (`car::Anova`; see [One-Way ANOVA](#anova1) why) to the linear model (`lm`). Notice that in ANOVA, we are testing a full factor interaction all at once which involves many parameters (two in this case), so we can't look at the overall model fit nor any particular parameter for the result. Therefore, I use a [likelihood-ratio test](https://en.wikipedia.org/wiki/Likelihood-ratio_test) to compare a full 双因素方差分析 model ("saturated") to one without the interaction effect(s). The `anova` function does this test. Even though that looks like cheating, it's just computing likelihoods, p-values, etc. on the models that were already fitted, so it's legit!
 
 ```{r, results='hold'}
 # Dedicated two-way ANOVA functions
@@ -919,7 +928,7 @@ null = lm(value ~ 1 + group_b + group_c + mood_happy, D)  # Without interaction
 c = anova(null, full)  # whoop whoop, same F, p, and Dfs
 ```
 
-Results:
+结果：
 
 ```{r, echo=FALSE, warning=FALSE}
 at = tidy(a)[3, ]
@@ -982,19 +991,19 @@ summary(f)
 </div>
 
 
-## ANCOVA {#ancova}
-This is simply ANOVA with a continuous regressor added so that it now contains continuous and (dummy-coded) categorical predictors. For example, if we continue with the [one-way ANOVA](#anova1) example, we can add `age` and it is now called a **one-way ANCOVA**:
+## 协方差分析（ANCOVA） {#ancova}
+This is simply ANOVA with a continuous regressor added so that it now contains continuous and (dummy-coded) categorical predictors. For example, if we continue with the [单因素方差分析](#anova1) example, we can add `age` and it is now called a **单因素协方差分析（one-way ANCOVA）**：
 
 $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_3 age$
 
-... where $x_i$ are our usual dummy-coded indicator variables. $\beta_0$ is now the mean for the first group at $age=0$. You can turn all ANOVAs into ANCOVAs this way, e.g. by adding $\beta_N \cdot age$ to our **two-way ANOVA** in the previous section. But let us go ahead with our one-way ANCOVA, starting by adding $age$ to our dataset:
+... where $x_i$ are our usual dummy-coded indicator variables. $\beta_0$ is now the mean for the first group at $age=0$. You can turn all ANOVAs into ANCOVAs this way, e.g. by adding $\beta_N \cdot age$ to our **双因素方差分析** in the previous section. But let us go ahead with our one-way ANCOVA, starting by adding $age$ to our dataset:
 
 ```{r, results='hold'}
 # Update data with a continuous covariate
 D$age = D$value + rnorm_fixed(nrow(D), sd = 3)  # Correlated to value
 ```
 
-This is best visualized using colors for groups instead of x-position. The $\beta$s are still the average $y$-offset of the data points, only now we model each group using a slope instead of an intercept. In other words, the one-way ANOVA is sort of [one-sample t-tests](#t1) model for each group ($y = \beta_0$) while the **one-way ANCOVA** is sort of [Pearson correlation](#correlation) model for each group ($y_i = \beta_0 + \beta_i + \beta_1 \cdot age$):
+This is best visualized using colors for groups instead of x-position. The $\beta$s are still the average $y$-offset of the data points, only now we model each group using a slope instead of an intercept. In other words, the one-way ANOVA is sort of [one-sample t-tests](#t1) model for each group ($y = \beta_0$) while the **单因素协方差分析** is sort of [Pearson correlation](#correlation) model for each group ($y_i = \beta_0 + \beta_i + \beta_1 \cdot age$):
 
 
 <div class="fold s">
@@ -1033,7 +1042,7 @@ result_group = anova(null_group, full)
 ```
 
 
-Results:
+结果：
 
 ```{r, echo=FALSE}
 at = tidy(a)[1:2,]
@@ -1085,8 +1094,8 @@ sm::sm.ancova(x=D$age, y=D$value, group=D$group, display='none', model='equal')
 Recall that when you take the logarithm, you can easily make statements about *proportions*, i.e., that for every increase in $x$, $y$ increases a certain percentage. This turns out to be one of the simplest (and therefore best!) ways to make count data and contingency tables intelligible. See [this nice introduction](https://www.uni-tuebingen.de/fileadmin/Uni_Tuebingen/SFB/SFB_833/A_Bereich/A1/Christoph_Scheepers_-_Statistikworkshop.pdf) to Chi-Square tests as linear models.
 
 
-## Goodness of fit {#goodness}
-### Theory: As log-linear model
+## 拟合优度检验 {#goodness}
+理论：作为 log 线性模型
 Model: a single intercept predicts $log(y)$.
 
 I'll refer you to take a look at [the section on contingency tables](#contingency) which is basically a "two-way goodness of fit".
@@ -1107,7 +1116,7 @@ $log(y) = log(\beta_1*x_1 + \beta_2*x_2 + \beta_3*x_3 +...) \qquad \mathcal{H}_0
 $log(y) = log(N\beta_1*x_1/N + N)$
 -->
 
-### Example data
+### 示例数据
 For this, we need some wide count data:
 ```{r}
 # Data in long format
@@ -1124,7 +1133,7 @@ print_df(D)
 ```
 
 
-### R code: Goodness of fit
+### R 代码：Goodness of fit
 Now let's see that the Goodness of fit is just a log-linear equivalent to a one-way ANOVA. We set `family = poisson()` which defaults to setting a logarithmic [link function](https://en.wikipedia.org/wiki/Generalized_linear_model#Link_function) (`family = poisson(link='log')`).
 
 ```{r, results='hold'}
@@ -1165,9 +1174,9 @@ Note the strange `anova(..., test='Rao')` which merely states that p-values shou
 By the way, if there are only two counts and a large sample size (N > 100), this model begins to approximate the **binomial test**, `binom.test`, to a reasonable degree. But this sample size is larger than most use cases, so I won't raise to a rule-of-thumb and won't dig deeper into it here.
 
 
-## Contingency tables {#contingency}
-### Theory: As log-linear model
-The theory here will be a bit more convoluted, and I mainly write it up so that you can get the *feeling* that it really is just a log-linear [two-way ANOVA model](#anova2). Let's get started...
+## 列联表 {#contingency}
+理论：作为 log 线性模型
+The theory here will be a bit more convoluted, and I mainly write it up so that you can get the *feeling* that it really is just a log-linear [双因素方差分析 model](#anova2). Let's get started...
 
 For a two-way contingency table, the model of the count variable $y$ is a modeled using the marginal proportions of a contingency table. Why this makes sense, is too involved to go into here, but [see the relevant slides by Christoph Scheepers here](https://www.uni-tuebingen.de/fileadmin/Uni_Tuebingen/SFB/SFB_833/A_Bereich/A1/Christoph_Scheepers_-_Statistikworkshop.pdf) for an excellent exposition. The model is composed of a lot of counts and the regression coefficients $A_i$ and $B_i$:
 
@@ -1183,10 +1192,10 @@ Ah, much prettier. However, there is still lot's of multiplication which makes i
 
 $log(y_i) = log(N) + log(\alpha_i) + log(\beta_j) + log(\alpha_i\beta_j)$
 
-Snuggly! Now we can get a better grasp on how the regression coefficients (which are proportions) independently contribute to $y$. This is why logarithms are so nice for proportions. Note that this is just [the two-way ANOVA model](#anova2) with some logarithms added, so we are back to our good old linear models - only the interpretation of the regression coefficients have changed! And we cannot use `lm` anymore in R.
+Snuggly! Now we can get a better grasp on how the regression coefficients (which are proportions) independently contribute to $y$. This is why logarithms are so nice for proportions. Note that this is just [the 双因素方差分析 model](#anova2) with some logarithms added, so we are back to our good old linear models - only the interpretation of the regression coefficients have changed! And we cannot use `lm` anymore in R.
 
 
-### Example data
+### 示例数据
 Here we need some long data and we need it in table format for `chisq.test`:
 
 ```{r}
@@ -1215,8 +1224,8 @@ print_df(D)
 ```
 
 
-### R code: Chi-square test
-Now let's show the equivalence between a chi-square model and a log-linear model. This is very similar to our [two-way ANOVA](#anova2) above:
+### R 代码：Chi-square test
+Now let's show the equivalence between a chi-square model and a log-linear model. This is very similar to our [双因素方差分析](#anova2) above:
 
 ```{r, results='hold'}
 # Built-in chi-square. It requires matrix format.
@@ -1318,7 +1327,7 @@ Note that whereas the understanding of sampling and hypothesis testing is usuall
     
     2. *Means of one variable:* [One-way ANOVA](#anova1).
     
-    3. *Means of two variables:* [Two-way ANOVA](#anova2).
+    3. *Means of two variables:* [双因素方差分析](#anova2).
     
     
 4. **Special case #3: Three or more proportions (Chi-Square)**
@@ -1337,10 +1346,10 @@ Note that whereas the understanding of sampling and hypothesis testing is usuall
     2. *Likelihood ratios:* Likelihood ratios are the swizz army knife which will do model comparison all the way from the one-sample t-test to GLMMs. BIC penalizes model complexity. Moreover, add priors and you've got Bayes Factors. One tool, and you're done. I've used LRTs in the ANOVAs above.
 
 
-# Limitations
-I have made a few simplifications for clarity:
+# 限制
+我有一些需要澄清的简化前提：
 
-1. I have not covered assumptions in the examples. This will be another post! But all assumptions of all tests come down to the usual three: a) independence of data points, b) normally distributed residuals, and c) homoscedasticity.
+1. I have not covered assumptions in the examples. This will be another post! But all assumptions of all tests come down to the usual three: a) 数据点是独立的，b) 残差服从正态分布，c) 方差齐次性（homoscedasticity）。
 
 2. I assume that all null hypotheses are the absence of an effect, but everything works the same for non-zero null hypotheses.
 
