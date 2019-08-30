@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <style type="text/css">
+    body {
+      /* margin: 40px; */
+      font-family: Arial, Helvetica, 'Noto Sans CJK SC', 'Source Han Sans SC', sans-serif;
+      font-weight: normal;
+      font-size: 12px;
+    }
+
+    code {
+      font-family: 'Source Code Pro', 'Courier New', Courier, monospace;
+    }
+
+    .header-wrapper {
+      /* width: 700px; */
+      display: grid;
+      grid-template-columns: 10fr 5fr 1fr;
+      grid-template-rows: 10fr 30fr 3fr;
+      grid-gap: 0px;
+    }
+
+    .header-small-box1 {
+      grid-column: 1/2;
+      grid-row: 1/4;
+    }
+
+    .header-small-box2 {
+      grid-column: 2/3;
+      grid-row-start: 2;
+      background-color: rgb(221, 221, 221);
+      /* align-items: center; */
+    }
+
+    .box {
+      padding: 3px;
+      border-style: solid;
+      border-width: 0.5px;
+      border-color: black;
+    }
+
+    .wrapper {
+      /* width: 700px; */
+      display: grid;
+      grid-template-columns: 1fr 5fr 8fr 8fr 3fr 13fr 3fr;
+      grid-gap: 0px;
+    }
+
+    .nobox {
+      border-color: white;
+    }
+
+    .box2 {
+      grid-column: 1/2;
+      grid-row: 2/6;
+      /* z-index: 10; */
+    }
+
+    .box3 {
+      grid-column: 1/2;
+      grid-row: 6/11;
+    }
+
+    .text-vertical {
+      writing-mode: sideways-lr;
+      -webkit-writing-mode: sideways-lr;
+      -ms-writing-mode: sideways-lr;
+      text-orientation: sideways;
+    }
+
+    .note {
+      font-size: smaller;
+    }
+
+    .colourful-row-1 {
+      display: contents;
+    }
+
+    .colourful-row-1>.box {
+      background: rgb(167, 227, 243);
+    }
+
+    .colourful-row-2 {
+      display: contents;
+    }
+
+    .colourful-row-2>.box {
+      background: rgb(255, 255, 166);
+    }
+
+    .colourful-row-3 {
+      display: contents;
+    }
+
+    .colourful-row-3>.box {
+      background: rgb(176, 227, 165);
+    }
+
+    .colourful-row-4 {
+      display: contents;
+    }
+
+    .colourful-row-4>.box {
+      background: rgb(223, 227, 165);
+    }
+
+    .colourful-row-5 {
+      display: contents;
+    }
+
+    .colourful-row-5>.box {
+      background: rgb(255, 169, 139);
+    }
+
+    .emp {
+      font-weight: bold;
+    }
+
+    .soft-emp {
+      font-style: italic;
+    }
+
+    .footer-wrapper {
+      /* width: 700px; */
+      display: grid;
+      grid-template-columns: 14fr 1fr 3fr 5fr;
+      grid-gap: 0px;
+    }
+
+    .footer-small-box1 {
+      grid-column: 1/2;
+    }
+
+    .footer-small-box2 {
+      grid-column: 3/4;
+    }
+
+    .footer-small-box3 {
+      grid-column: 4/5;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header-wrapper">
+    <div class="header-small-box1">
+      <h1>常见的统计检验是线性模型</h1>
+      <p>英文版最后更新于 2019 年 6 月 28 日，中文版最后更新于 2019 年 8 月 31 日。也可查阅 <a href="https://eigenfoo.xyz/tests-as-linear/">Python
+          版</a>！</p>
+    </div>
+    <div class="header-small-box2">
+      <p>从配套的笔记查看可运行例子和更多细节：<br>英文版： <a
+          href="https://lindeloev.github.io/tests-as-linear">https://lindeloev.github.io/tests-as-linear</a>，<br>中文版：<a
+          href="https://cosx.org">https://cosx.org</a> </p>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <div class="box nobox"></div>
+
+    <div class="box box3"><span class="text-vertical emp">多变量回归：<code>lm(y ~ 1 + x1 + x2 + ...)</code></span></div>
+    <div class="box emp">常见名称</div>
+    <div class="box emp">R 内置函数</div>
+    <div class="box emp">R 中的等价线性模型</div>
+    <div class="box emp">精确近似</div>
+    <div class="box emp">线性模型的文字解释</div>
+    <div class="box emp">图标</div>
+
+    <div class="box box2"><span class="text-vertical emp">单变量回归：<code>lm(y ~ 1 + x)</code></span></div>
+
+    <div class="colourful-row-1">
+      <div class="box"><span class="emp">y 独立于 x</span><br>P：单样本 t 检验<br>N：Wilcoxon 符号秩检验</div>
+      <div class="box"><code><br>t.test(y)<br>wilcox.test(y)</code></div>
+      <div class="box"><code><br>lm(y ~ 1)<br>lm(signed_rank(y) ~ 1)</code></div>
+      <div class="box"><br>✓<br>N &gt; 14</div>
+      <div class="box"><br>从一个数字（截距，比如说平均值）来预测 y。<br>-（相同，但是它预测 y 的<span class="soft-emp">符号秩</span>。）</div>
+      <div class="box"><img src="./include/cheat_sheet_plots/p1.png" alt="p1" height="60" width="90"></div>
+    </div>
+
+    <div class="colourful-row-1">
+      <div class="box">P：配对样本 t 检验<br>N：Wilcoxon 配对组检验</div>
+      <div class="box"><code>t.test(y1, y2, paired=TRUE)<br>wilcox.test(y1, y2, paired=TRUE)</code></div>
+      <div class="box"><code>lm(y2 - y1 ~ 1)<br>lm(signed_rank(y2 - y1) ~ 1)</code></div>
+      <div class="box">✓<br>N &gt; 14</div>
+      <div class="box">从一个截距来预测配对 y2-y1。<br>-（相同，但是它预测 y2-y1 的<span class="soft-emp">符号秩。</span>）</div>
+      <div class="box"><img src="./include/cheat_sheet_plots/p2_1.png" alt="p2_1" height="45" width="30"><img
+          src="./include/cheat_sheet_plots/p2_2.png" alt="p2_2" height="60" width="20"><img src="./include/cheat_sheet_plots/p2_3.png" alt="p2_3"
+          height="60" width="30"></div>
+    </div>
+
+    <div class="colourful-row-2">
+      <div class="box"><span class="emp">y ~ 连续变量 x</span><br>P：Pearson 相关系数<br>N：Spearman 相关系数</div>
+      <div class="box"><code><br>cor.test(x, y, method='Pearson')<br>cor.test(x, y, method=Spearman')</code></div>
+      <div class="box"><code><br>lm(y ~ 1 + x)<br>lm(rank(y) ~ 1 + rank(x))</code></div>
+      <div class="box"><br>✓<br>N &gt; 10</div>
+      <div class="box"><br>从一个截距加上 x 乘以一个数值（斜率）来预测 y。<br>-（相同，但是使用了 x 和 y 的<span class="soft-emp">秩</span>）</div>
+      <div class="box"><img src="./include/cheat_sheet_plots/p3.png" alt="p3" height="60" width="90"></div>
+    </div>
+
+    <div class="colourful-row-3">
+      <div class="box"><span class="emp">y ~ 离散变量 x</span><br>P：双样本 t 检验<br>P：Welch t 检验<br>N：Mann-Whitney U 检验</div>
+      <div class="box">
+        <code><br>t.test(y1, y2, var.equal=TRUE)<br>t.test(y1, y2, var.equal=FALSE)<br>wilcox.test(y1, y2)</code>
+      </div>
+      <div class="box">
+        <code><br>lm(y ~ 1 + G2)<sup>A</sup><br>gls(y ~ 1 + G2, weights=...<sup>B</sup>)<sup>A</sup><br>lm(signed_rank(y) ~ 1 + G2)<sup>A</sup></code>
+      </div>
+      <div class="box"><br>✓<br>✓<br>N &gt; 11</div>
+      <div class="box"><br>从第 1 组的截距（如果是第 2 组的话加多一个相差值）来预测 y。<br>-（相同，但是<span
+          class="soft-emp">每一组</span>用不同的方差，而不是用着共同的方差。）<br>-（相同，不过这个预测了 y 的<span class="soft-emp">符号秩</span>。）
+      </div>
+      <div class="box"><img src="./include/cheat_sheet_plots/p4.png" alt="p4" height="60" width="90"></div>
+    </div>
+
+    <div class="colourful-row-3">
+      <div class="box">P：单因素方差分析（one-way ANOVA）<br>N：Kruskall-Wallis 检验</div>
+      <div class="box"><code>aov(y ~ group)<br>kruskal.test(y ~ group)</code></div>
+      <div class="box">
+        <code>lm(y ~ 1 + G2 + G3 + .. + Gn)<sup>A</sup><br>lm(rank(y) ~ 1 + G2 + G3 + .. + Gn)<sup>A</sup></code></div>
+      <div class="box">✓<br>N &gt; 11</div>
+      <div class="box">从第 1 组的截距（如果不是第 1 组的话加多一个相差值）来预测 y。<br>-（相同，不过这个预测了 y 的<span class="soft-emp">秩</span>。）</div>
+      <div class="box"><img src="./include/cheat_sheet_plots/p5.png" alt="p5" height="60" width="90"></div>
+    </div>
+
+    <div class="colourful-row-4">
+      <div class="box">P：单因素协变量分析（one-way ANCOVA）</div>
+      <div class="box"><code>aov(y ~ group + x)</code></div>
+      <div class="box"><code>lm(y ~ 1 + G2 + G3 + ... + Gn + x)<sup>A</sup></code></div>
+      <div class="box">✓</div>
+      <div class="box">-（相同，不过加上了 x 的斜率。）<br><span class='note'>注意：这里是离散和连续的混合情况。单因素协变量分析是单因素方差分析加上一个连续的 x。</span></div>
+      <div class="box"><img src="./include/cheat_sheet_plots/p6.png" alt="p6" height="60" width="90"></div>
+    </div>
+
+    <div class="colourful-row-5">
+      <div class="box">P：双因素方差分析（two-way ANOVA）</div>
+      <div class="box"><code>aov(y ~ group * sex)</code></div>
+      <div class="box"><code>lm(y ~ 1+G2+G3+...+Gn+
+      S2+S3+...+Sk+
+      G2*S2+G3*S3+...+Gn*Sk)</code></div>
+      <div class="box">✓</div>
+      <div class="box">交互项：sex 的变化会导致 y ~ group 参数的变化。<br>
+        <span class='note'>注意：G2 ... Gn 是 <span class="emp">group</span>
+          变量的每一个非截距的可能取值的示性（0 或 1）变量。<br>
+          同理地，S2 ... Sk 是 sex 变量的示性变量。<br>
+          第一条线（Gi）是 group 变量的主要效应，第二条线（Si）是 sex 变量的主要效应，第三条线是 <span class="emp">group * sex</span> 的交互效应。<br>
+          对于两种可能取值范围（如男性女性）情况，第 2 条线则是 S2，而第 3 条线是 S2 乘以每个 Gi。
+        </span></div>
+      <div class="box">（待绘制）</div>
+    </div>
+
+    <div class="colourful-row-5">
+      <div class="box"><span class="emp">计数 ~ 离散 x</span><br>N：卡方检验</div>
+      <div class="box"><code><br>chisq.test(groupXsex_table)</code></div>
+      <div class="box"><span class="emp">等价的对数线性模型</span><br><code>glm(y ~ 1+G2+G3+...+Gn+
+      S2+S3+...+Sk+
+      G2*S2+G3*S3+...+Gn*Sk, family=...)<sup>A</sup></code></div>
+      <div class="box">✓</div>
+      <div class="box">交互项：（和双因素方差分析一致）<br><span class='note'>注意：使用以下参数运行 glm
+          函数：<code>glm(model, family=poisson())</code>。<br>对于线性模型，卡方检验是log(y_i) = log(N) + log(alpha_i) + log(beta_i) +
+          log(alpha_i beta_i)，<br>其中 alpha_i 和 beta_i 是比率。建议查阅配套笔记获得更多信息。</span></div>
+      <div class="box">和双因素方差分析一致</div>
+    </div>
+
+    <div class="colourful-row-3">
+      <div class="box">N：拟合优度检验</div>
+      <div class="box"><code>chisq.test(y)</code></div>
+      <div class="box"><code>glm(y ~ 1 + G2 + G3 + ... + Gn, family=...)<sup>A</sup></code></div>
+      <div class="box">✓</div>
+      <div class="box">（和单因素方差分析一致，建议查阅卡方检验笔记。）</div>
+      <div class="box">和单因素方差分析一致</div>
+    </div>
+  </div>
+
+  <p>常见的参数（P，parametric）和非参（N，non-parametric）检验，以及等价的线性模型。记号 <code>y ~ 1 + x</code> 是 R 对于大部分我们在学校学习的 y = 1·b + a·x
+    的快捷表达方式。相似颜色的模型本身也非常相似，真的，你们可以看看它们的一些颜色其实是相同的！就非参模型而言，对于样本量不小的情况，线性模型是足够好的近似了（见“精确近似”一列，点击链接查看对应模拟）。其余没那么精确的近似也是存在的，比如说
+    Wilcoxon 检验和符号检验，以及拟合优度检验和二项检验。符号秩函数的定义是 <code>signed_rank = function(x) sign(x) * rank(abs(x))</code>。变量
+    <code>Gi</code> 和 <code>Si</code> 是示性变量（取值只能是 0 或 1），揭示出当类别之间 Δx = 1 的时候，差值等于斜率。下标（如 <code>G2</code> 或
+    <code>y1</code>）表示数据中的不同列。<code>lm</code> 对于所有非连续变量模型都需要长格式数据。可以在 <a
+      href="https://lindeloev.github.io/tests-as-linear">https://lindeloev.github.io/tests-as-linear</a>（英文版）或 <a
+      href="https://cosx.org">https://cosx.org</a>（中文版）里找到以上内容的进一步解释和可运行例子。</p>
+
+  <div class="footer-wrapper">
+    <div class="footer-small-box1">
+      <p><sup>A</sup>查看双因素方差分析笔记获取记号的解释。<br>
+        <sup>B</sup>相同模型，但是每个组有自己的方差：<code>gls(value ~ 1 + G2, weights = varIdent(form = ~1|group), method="ML")</code>。
+      </p>
+    </div>
+    <div class="footer-small-box2">
+      <p>
+        <img src="./include/cheat_sheet_plots/cc-by.svg" alt="cc-by" />
+      </p>
+    </div>
+    <div class="footer-small-box3">
+      <p>原作者：Jonas Kristoffer Lindeløv<br><a href="https://lindeloev.net">https://lindeloev.net</a></p>
+    </div>
+  </div>
+
+</body>
+
+</html>
