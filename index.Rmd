@@ -27,6 +27,7 @@ output:
 ```{r echo=FALSE}
 # Options for building this document
 knitr::opts_chunk$set(
+  dev = 'svg',
   fig.height = 4,
   fig.width = 6,
   fig.align = 'center',

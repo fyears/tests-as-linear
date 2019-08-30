@@ -399,7 +399,7 @@ P_pearson = ggplot(D_correlation, aes(x=X1*0.5+0.2, y=X2*0.5+0.4)) +
   scale_color_manual(name=NULL, values=c(&quot;blue&quot;, &quot;red&quot;), labels=c(bquote(beta[0]*&quot; (intercept)&quot;), bquote(beta[1]*&quot; (slope)&quot;)))
   
 theme_axis(P_pearson, legend.position = c(0.4, 0.9))</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.svg" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <p>这通常被称为<strong>回归</strong>模型，而且当右边有多个 <span class="math inline">\(\beta\)</span> 和自变量相乘的时候，它被扩展为<strong>多元回归</strong>。以下的所有模型，从<a href="#t1">单样本 t 检验</a>到<a href="#anova2">双因素方差分析</a>，都只是这个设定下的特殊形式。不多不少。</p>
 <p>正如它名字所示意的，<strong>Spearman 秩相关系数</strong>就是 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(y\)</span> 的秩变换后的<strong>Pearson 相关系数</strong>：</p>
@@ -421,7 +421,7 @@ P_spearman = ggplot(D_correlation, aes(x=rank(X1), y=rank(X2))) +
 
 # Stich together using patchwork
 (theme_axis(P_pearson, legend.position=c(0.5, 0.1)) + geom_text(aes(label=label_num), nudge_y=0.1, size=3, color=&#39;dark gray&#39;) + labs(title=&#39;         Pearson&#39;)) + (theme_axis(P_spearman, xlim=c(-7.5, 30), ylim=c(-7.5, 30), legend.position=c(0.5, 0.1)) + labs(title=&#39;         Spearman&#39;))</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.svg" width="768" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="rank" class="section level3">
@@ -567,7 +567,7 @@ P_t1_rank = ggplot(D_t1_rank, aes(y = y, x = 0)) +
 # Stich together using patchwork
 theme_axis(P_t1, ylim = c(-1, 2), legend.position = c(0.6, 0.1)) + 
   theme_axis(P_t1_rank, ylim = NULL,  legend.position = c(0.6, 0.1))</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-13-1.svg" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="r--t-" class="section level3">
@@ -683,7 +683,7 @@ P_tpaired = ggplot(D_tpaired, aes(x = x, y = y)) +
 
 # Use patchwork to put them side-by-side
 theme_axis(P_tpaired) + theme_axis(P_t1, legend.position = c(0.6, 0.1))</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-20-1.svg" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <p>相似地，<strong>Wilcoxon 配对组</strong>和<strong>Wilcoxon 符号秩</strong>的唯一差别，就是它是对配对的 <span class="math inline">\(y-x\)</span> 差的符号秩进行检验。</p>
 <p><span class="math inline">\(signed\_rank(y_2-y_1) = \beta_0 \qquad \mathcal{H}_0: \beta_0 = 0\)</span></p>
@@ -815,7 +815,7 @@ P_t2 = ggplot(D_t2, aes(x=x, y=y)) +
   #scale_x_discrete(breaks=c(0.5, 1.5), labels=c(&#39;1&#39;, &#39;2&#39;))
 
 theme_axis(P_t2, jitter = TRUE, xlim = c(-0.3, 2), legend.position = c(0.53, 0.08))</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-27-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-27-1.svg" width="576" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="dummy2" class="section level3">
@@ -1030,7 +1030,7 @@ P_anova1 = ggplot(D_anova1, aes(x=x, y=y)) +
   
 
 theme_axis(P_anova1, xlim = c(-0.5, 4), legend.position = c(0.7, 0.1))</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-37-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-37-1.svg" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <p>单因素方差分析有一个对数线性版本，称为<a href="#goodness">拟合优度</a>检验，我们稍后会讲到。顺便一说，因为我们现在对多个 <span class="math inline">\(x\)</span> 进行回归，因此单因素方差分析是 <strong>多元回归</strong> 模型。</p>
 <p><strong>Kruskal-Wallis</strong> 检验只是对于秩转换的 <span class="math inline">\(y\)</span>（<code>value</code>）的 <strong>单因素方差分析</strong>：</p>
@@ -1173,7 +1173,7 @@ P_anova2 = ggplot(D, aes(x=group, y=value, color=mood)) +
   geom_segment(x = -10, xend = 100, y = means[1], yend = 0.5, col = &#39;blue&#39;, lwd = 2) +
   stat_summary(fun.y = mean, geom = &quot;errorbar&quot;, aes(ymax = ..y.., ymin = ..y..),  lwd = 2)
 theme_axis(P_anova2, xlim = c(-0.5, 3.5)) + theme(axis.text.x = element_text())</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-48-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-48-1.svg" width="576" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="r--1" class="section level3">
@@ -1279,7 +1279,7 @@ P_ancova = ggplot(D, aes(x=age, y=value, color=group, shape=group)) +
 
 # Theme it
 theme_axis(P_ancova, xlim=NULL, ylim=NULL, legend.position=c(0.8, 0.2)) + theme(axis.title=element_text())</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-56-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-56-1.svg" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <p>这里是使用线性模型运行单因素方差分析的 R 代码：</p>
 <pre class="r"><code># Dedicated ANCOVA functions. The order of factors matter in pure-aov (type-I variance).
