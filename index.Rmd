@@ -1,6 +1,7 @@
 ---
 title: "常见的统计检验是线性模型（或：如何教导统计学）"
 
+lang: "zh-Hans"
 output: 
   html_document:
     df_print: default
