@@ -1,4 +1,4 @@
-This is the Chinese translation source code underlying the post [Common statistical tests are linear models (or: how to teach stats)](https://lindeloev.github.io/tests-as-linear/). The original post's author explained it in [this Twitter thread](https://twitter.com/jonaslindeloev/status/1110907133833502721).
+This is the **Chinese** translation source code underlying the post [Common statistical tests are linear models (or: how to teach stats)](https://lindeloev.github.io/tests-as-linear/). The original post's author explained it in [this Twitter thread](https://twitter.com/jonaslindeloev/status/1110907133833502721).
 
 This is the main content:
 
