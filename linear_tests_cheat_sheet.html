@@ -202,7 +202,7 @@
       <div class="box"><span class="emp">y ~ 连续变量 x</span><br>P：Pearson 相关系数<br>N：Spearman 相关系数</div>
       <div class="box"><code><br>cor.test(x, y, method='Pearson')<br>cor.test(x, y, method=Spearman')</code></div>
       <div class="box"><code><br>lm(y ~ 1 + x)<br>lm(rank(y) ~ 1 + rank(x))</code></div>
-      <div class="box"><br>✓<br>N &gt; 10</div>
+      <div class="box"><br>✓<br><a href="https://lindeloev.github.io/tests-as-linear/simulations/simulate_spearman.html">N &gt; 10</a></div>
       <div class="box"><br>从一个截距加上 x 乘以一个数值（斜率）来预测 y。<br>-（相同，但是使用了 x 和 y 的<span class="soft-emp">秩</span>）</div>
       <div class="box"><img src="./include/cheat_sheet_plots/p3.png" alt="p3" height="60" width="90"></div>
     </div>
@@ -215,7 +215,7 @@
       <div class="box">
         <code><br>lm(y ~ 1 + G2)<sup>A</sup><br>gls(y ~ 1 + G2, weights=...<sup>B</sup>)<sup>A</sup><br>lm(signed_rank(y) ~ 1 + G2)<sup>A</sup></code>
       </div>
-      <div class="box"><br>✓<br>✓<br>N &gt; 11</div>
+      <div class="box"><br>✓<br>✓<br><a href="https://lindeloev.github.io/tests-as-linear/simulations/simulate_mannwhitney.html">N &gt; 11</a></div>
       <div class="box"><br>从第 1 组的截距（如果是第 2 组的话加多一个相差值）来预测 y。<br>-（相同，但是<span
           class="soft-emp">每一组</span>用不同的方差，而不是用着共同的方差。）<br>-（相同，不过这个预测了 y 的<span class="soft-emp">符号秩</span>。）
       </div>
@@ -234,7 +234,7 @@
       <div class="box"><code>aov(y ~ group)<br>kruskal.test(y ~ group)</code></div>
       <div class="box">
         <code>lm(y ~ 1 + G2 + G3 + .. + Gn)<sup>A</sup><br>lm(rank(y) ~ 1 + G2 + G3 + .. + Gn)<sup>A</sup></code></div>
-      <div class="box">✓<br>N &gt; 11</div>
+      <div class="box">✓<br><a href="https://lindeloev.github.io/tests-as-linear/simulations/simulate_kruskall.html">N &gt; 11</a></div>
       <div class="box">从第 1 组的截距（如果不是第 1 组的话加多一个相差值）来预测 y。<br>-（相同，不过这个预测了 y 的<span class="soft-emp">秩</span>。）</div>
       <div class="box"><img src="./include/cheat_sheet_plots/p5.png" alt="p5" height="60" width="90"></div>
     </div>
