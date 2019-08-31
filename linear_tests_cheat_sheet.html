@@ -15,6 +15,10 @@
       font-family: 'Source Code Pro', 'Courier New', Courier, monospace;
     }
 
+    .svg-code {
+      font-family: 'Source Code Pro', 'Courier New', Courier, monospace;
+    }
+
     .header-wrapper {
       /* width: 700px; */
       display: grid;
@@ -160,8 +164,6 @@
 
   <div class="wrapper">
     <div class="box nobox"></div>
-
-    <div class="box box3"><span class="text-vertical emp">多变量回归：<code>lm(y ~ 1 + x1 + x2 + ...)</code></span></div>
     <div class="box emp">常见名称</div>
     <div class="box emp">R 内置函数</div>
     <div class="box emp">R 中的等价线性模型</div>
@@ -169,7 +171,12 @@
     <div class="box emp">线性模型的文字解释</div>
     <div class="box emp">图标</div>
 
-    <div class="box box2"><span class="text-vertical emp">单变量回归：<code>lm(y ~ 1 + x)</code></span></div>
+    <div class="box box2">
+      <svg width="30" height="300">
+        <text x="-50" y="150" transform="rotate(-90, 18, 150)" class="emp">单变量回归：<tspan class="svg-code">lm(y ~ 1 + x)
+          </tspan>
+        </text>
+    </div>
 
     <div class="colourful-row-1">
       <div class="box"><span class="emp">y 独立于 x</span><br>P：单样本 t 检验<br>N：Wilcoxon 符号秩检验</div>
@@ -187,8 +194,8 @@
       <div class="box">✓<br>N &gt; 14</div>
       <div class="box">从一个截距来预测配对 y2-y1。<br>-（相同，但是它预测 y2-y1 的<span class="soft-emp">符号秩。</span>）</div>
       <div class="box"><img src="./include/cheat_sheet_plots/p2_1.png" alt="p2_1" height="45" width="30"><img
-          src="./include/cheat_sheet_plots/p2_2.png" alt="p2_2" height="60" width="20"><img src="./include/cheat_sheet_plots/p2_3.png" alt="p2_3"
-          height="60" width="30"></div>
+          src="./include/cheat_sheet_plots/p2_2.png" alt="p2_2" height="60" width="20"><img
+          src="./include/cheat_sheet_plots/p2_3.png" alt="p2_3" height="60" width="30"></div>
     </div>
 
     <div class="colourful-row-2">
@@ -213,6 +220,13 @@
           class="soft-emp">每一组</span>用不同的方差，而不是用着共同的方差。）<br>-（相同，不过这个预测了 y 的<span class="soft-emp">符号秩</span>。）
       </div>
       <div class="box"><img src="./include/cheat_sheet_plots/p4.png" alt="p4" height="60" width="90"></div>
+    </div>
+
+    <div class="box box3">
+      <svg width="30" height="300">
+        <text x="-120" y="150" transform="rotate(-90, 18, 150)" class="emp">多变量回归：<tspan class="svg-code">lm(y ~ 1 + x1
+            + x2 + ...)</tspan>
+        </text>
     </div>
 
     <div class="colourful-row-3">
