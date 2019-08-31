@@ -82,7 +82,7 @@ print_df = function(D,
 > devtools::install_github("thomasp85/patchwork")
 > ```
 
-此文档整理如下表。它展示了在常见的参数和“非参”检验之下的线性模型。在同一个框架下展示所有检验，表达出了它们之间的许多相似之处。获得[图片版本](linear_tests_cheat_sheet.png)或 [PDF 版本](linear_tests_cheat_sheet.pdf)。
+此文档整理如下表。它展示了在常见的参数和“非参”检验之下的线性模型。在同一个框架下展示所有检验，表达出了它们之间的许多相似之处。获得[图片版本](linear_tests_cheat_sheet.png)或 [PDF 版本](linear_tests_cheat_sheet.pdf)或[在线版](linear_tests_cheat_sheet.html)。
 
 ***
 
