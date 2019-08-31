@@ -182,7 +182,7 @@
       <div class="box"><span class="emp">y 独立于 x</span><br>P：单样本 t 检验<br>N：Wilcoxon 符号秩检验</div>
       <div class="box"><code><br>t.test(y)<br>wilcox.test(y)</code></div>
       <div class="box"><code><br>lm(y ~ 1)<br>lm(signed_rank(y) ~ 1)</code></div>
-      <div class="box"><br>✓<br>N &gt; 14</div>
+      <div class="box"><br>✓<br><a href="https://lindeloev.github.io/tests-as-linear/simulations/simulate_wilcoxon.html">N &gt; 14</a></div>
       <div class="box"><br>从一个数字（截距，比如说平均值）来预测 y。<br>-（相同，但是它预测 y 的<span class="soft-emp">符号秩</span>。）</div>
       <div class="box"><img src="./include/cheat_sheet_plots/p1.png" alt="p1" height="60" width="90"></div>
     </div>
@@ -191,7 +191,7 @@
       <div class="box">P：配对样本 t 检验<br>N：Wilcoxon 配对组检验</div>
       <div class="box"><code>t.test(y1, y2, paired=TRUE)<br>wilcox.test(y1, y2, paired=TRUE)</code></div>
       <div class="box"><code>lm(y2 - y1 ~ 1)<br>lm(signed_rank(y2 - y1) ~ 1)</code></div>
-      <div class="box">✓<br>N &gt; 14</div>
+      <div class="box">✓<br><a href="https://lindeloev.github.io/tests-as-linear/simulations/simulate_wilcoxon.html">N &gt; 14</a></div>
       <div class="box">从一个截距来预测配对 y2-y1。<br>-（相同，但是它预测 y2-y1 的<span class="soft-emp">符号秩。</span>）</div>
       <div class="box"><img src="./include/cheat_sheet_plots/p2_1.png" alt="p2_1" height="45" width="30"><img
           src="./include/cheat_sheet_plots/p2_2.png" alt="p2_2" height="60" width="20"><img
@@ -257,7 +257,7 @@
       <div class="box">✓</div>
       <div class="box">交互项：sex 的变化会导致 y ~ group 参数的变化。<br>
         <span class='note'>注意：G2 ... Gn 是 <span class="emp">group</span>
-          变量的每一个非截距的可能取值的示性（0 或 1）变量。<br>
+          变量的每一个非截距的可能取值的<a href="https://en.wikipedia.org/wiki/Dummy_variable_(statistics)">示性（0 或 1）变量</a>。<br>
           同理地，S2 ... Sk 是 sex 变量的示性变量。<br>
           第一条线（Gi）是 group 变量的主要效应，第二条线（Si）是 sex 变量的主要效应，第三条线是 <span class="emp">group * sex</span> 的交互效应。<br>
           对于两种可能取值范围（如男性女性）情况，第 2 条线则是 S2，而第 3 条线是 S2 乘以每个 Gi。
