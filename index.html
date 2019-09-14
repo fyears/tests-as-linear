@@ -292,18 +292,18 @@ install.packages(pkgs)
 remotes::install_github(&quot;jumpingrivers/headR&quot;)
 remotes::install_github(&quot;thomasp85/patchwork&quot;)</code></pre>
 </blockquote>
-<p>此文档整理如下表。它展示了在常见的参数和“非参”检验之下的线性模型。在同一个框架下展示所有检验，表达出了它们之间的许多相似之处。获得<a href="linear_tests_cheat_sheet.png">图片版本</a>或 <a href="linear_tests_cheat_sheet.pdf">PDF 版本</a>或<a href="linear_tests_cheat_sheet.html">在线版</a>。</p>
+<p>此文档可归纳如下表。它展示了在常见的参数和“非参数”检验之下的线性模型。我们通过在同一个框架下展示所有的检验，来体现它们之间的许多相似之处。点击链接可获得<a href="linear_tests_cheat_sheet.png">图片版本</a>或 <a href="linear_tests_cheat_sheet.pdf">PDF 版本</a>或<a href="linear_tests_cheat_sheet.html">在线版</a>。</p>
 <hr />
 <p><a href="linear_tests_cheat_sheet.pdf"><img src="linear_tests_cheat_sheet.png" /></a></p>
 <hr />
 <div id="section" class="section level1">
 <h1><span class="header-section-number">1</span> 常见检验的简洁本质</h1>
-<p>大部分常见统计模型（t 检验、相关性、方差分析（ANOVA）、卡方，等等）都是线性模型的特殊形式，或者是很接近的近似行是。这漂亮的简洁性，意味着我们需要学习更少东西。特别地，这都来源于大部分学生从高中就学习的模型：<span class="math inline">\(y = a \cdot x + b\)</span>。不幸地，统计入门课程通常把各种检验教导魏独立的工具，更不要提它们对学生和教师生活所增加的复杂性了。</p>
-<p>当学生想分别学习每一个检验背后的参数假设的时候，相比于从线性模型进行推导，教材里多余的复杂性变得更为复杂。</p>
-<p>因此，我认为，先教导线性模型和扩展，<em>然后</em>对于一些特殊形式进行“改名”，这种方式是一种优秀的教导策略，并且有助于更深刻地<em>理解</em>假设检验。因为线性模型在频率学派、贝叶斯学派、基于置换的推断之间，都是相同的。我认为从模型开始，比从 p 值、第 1 类错误、贝叶斯因子、或其它东西开始，更为友好。</p>
+<p>大部分常见统计模型（t 检验、相关性、方差分析（ANOVA）、卡方，等等）都是线性模型的特殊形式，或者可看作线性模型的近似。这优雅的简洁性，意味着我们不需要掌握太多技巧。具体来说，这都来源于大部分学生从高中就学习的模型：<span class="math inline">\(y = a \cdot x + b\)</span>。然而很不幸的是，统计入门课程通常把各种检验分开教学，给学生和老师们增加了很多不必要的麻烦。</p>
+<p>另一方面，当学生们学习每一个检验背后的基本假设时，如果不是从线性模型推导，而是每个检验都单独死记硬背，这种不必要的复杂性又会成倍增加。</p>
+<p>因此，我认为，先教导线性模型和扩展，<em>然后</em>对于一些特殊形式进行“改名”，是一种优秀的教导策略，并且有助于更深刻地<em>理解</em>假设检验。因为线性模型在频率学派、贝叶斯学派、自助法统计推断之间，都是相同的。我认为从模型开始，比从 p 值、第 1 类错误、贝叶斯因子、或其它东西开始，更为友好。</p>
 <p>当考虑到在入门课程教授<em>“非参”</em>检验的时候，我认为我们可以避开“<a href="https://en.wikipedia.org/wiki/Lie-to-children">欺骗儿童</a>”的手段，而直接教导学生“非参”检验其实就是和秩相关的参数检验。对学生来说，思考“秩！”，更优于相信你可以魔术般地扔掉各种假设。实际上，在 <a href="https://jasp-stats.org/">JASP</a> 里，“非参”检验的贝叶斯等价模型，确实<a href="https://arxiv.org/abs/1712.06941">就是使用（隐）秩</a>来实现的。这里讨论的频率学派的“非参”检验，对于 N &gt; 15 的情况来说非常精确。</p>
 <p><img src="https://www.picsellmedia.com/wp-content/uploads/2017/01/shutterstock_336913772.jpg" /></p>
-<p>使用导航栏来跳转到你最喜欢的章节。在<a href="#links">来源</a>和<a href="#course">教材</a>两章节，有很多类似（尽管更为散乱）的材料。我希望你们可以一起来提供优化建议，或者直接在<a href="https://github.com/lindeloev/tests-as-linear">Github</a>提交修改。让我们一起来使本文章变得更棒！</p>
+<p>使用导航栏来跳转到你最喜欢的章节（因排版问题，统计之都翻译版没有导航栏，可以直接搜索相关关键词。—-译者著）。在<a href="#links">来源</a>和<a href="#course">教材</a>两章节，有很多类似（尽管更为散乱）的材料。我希望你们可以一起来提供优化建议，或者直接在<a href="https://github.com/lindeloev/tests-as-linear">Github</a>提交修改。让我们一起来使本文章变得更棒！</p>
 </div>
 <div id="section-1" class="section level1">
 <h1><span class="header-section-number">2</span> 设置和示例数据</h1>
@@ -375,7 +375,7 @@ group &lt;- rep(c(&quot;y1&quot;, &quot;y2&quot;), each = 50)</code></pre>
 <p>模型：<span class="math inline">\(y\)</span> 的形式是一个斜率（<span class="math inline">\(\beta_1\)</span>）乘以 <span class="math inline">\(x\)</span> 加上一个截距（<span class="math inline">\(\beta_0\)</span>，也就是一条直线）。</p>
 <p><span class="math inline">\(y = \beta_0 + \beta_1 x \qquad \mathcal{H}_0: \beta_1 = 0\)</span></p>
 <p>以上模型，实际上是我们熟悉的旧公式 <span class="math inline">\(y = ax + b\)</span> （这里书写顺序变为 <span class="math inline">\(y = b + ax\)</span>）的一个“更数学化”的表达。R 里面，我们比较懒，所以写成了 <code>y ~ 1 + x</code>，R 对此理解为 <code>y = 1*数 + x*另一个数</code>，而且，t 检验，线性回归，等等……，都只是去寻找能够最好地预测 <span class="math inline">\(y\)</span> 的数字。</p>
-<p>无论你怎么书写，截距（<span class="math inline">\(\beta_0\)</span>）和斜率（<span class="math inline">\(\beta_1\)</span>）都产生了一条直线：</p>
+<p>无论你怎么书写，截距（<span class="math inline">\(\beta_0\)</span>）和斜率（<span class="math inline">\(\beta_1\)</span>）都可以确定一条直线：</p>
 <div class="fold s">
 <pre class="r"><code># Fixed correlation
 D_correlation &lt;- data.frame(MASS::mvrnorm(30,
@@ -409,7 +409,7 @@ theme_axis(P_pearson, legend.position = c(0.4, 0.9))</code></pre>
 <p>这通常被称为<strong>回归</strong>模型，而且当右边有多个 <span class="math inline">\(\beta\)</span> 和自变量相乘的时候，它被扩展为<strong>多元回归</strong>。以下的所有模型，从<a href="#t1">单样本 t 检验</a>到<a href="#anova2">双因素方差分析</a>，都只是这个设定下的特殊形式。不多不少。</p>
 <p>正如它名字所示意的，<strong>Spearman 秩相关系数</strong>就是 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(y\)</span> 的秩变换后的<strong>Pearson 相关系数</strong>：</p>
 <p><span class="math inline">\(rank(y) = \beta_0 + \beta_1 \cdot rank(x) \qquad \mathcal{H}_0: \beta_1 = 0\)</span></p>
-<p>很快我就会介绍<a href="#rank">秩</a>这一个概念。现在，注意到线性模型的相关系数就是等价于“真正的” Pearson 相关系数，但是 p 值是近似值，<a href="simulations/simulate_spearman.html">这个近似值适用于 N&gt;10，并且在 N &gt; 20 的情况下差别极少</a>。</p>
+<p>很快我就会介绍<a href="#rank">秩</a>这一个概念。现在，注意到线性模型的相关系数就是等价于“真正的” Pearson 相关系数，但是 p 值是近似值，<a href="simulations/simulate_spearman.html">这个近似值适用于 N&gt;10，并且在 N &gt; 20 的情况下几乎完美</a>。</p>
 <p>很多学生都没有意识到这么漂亮和神奇的等价关系！对它们带上数据标签来可视化，我们可立刻看到这一秩转换过程：</p>
 <div class="fold s">
 <pre class="r"><code># Spearman intercept
@@ -440,10 +440,10 @@ P_spearman &lt;- ggplot(D_correlation, aes(x = rank(X1), y = rank(X2))) +
 </div>
 <div id="rank" class="section level3">
 <h3><span class="header-section-number">3.0.2</span> 理论：秩转换</h3>
-<p><code>秩（rank）</code>意思是对于一串数字，使用它们的排序号来“替换”它们（第 1 最小的，第 2 最小的，第 3 最小的，……）。因此 <code>rank(c(3.6, 3.4, -5.0, 8.2))</code> 的秩转换结果是 <code>3, 2, 1, 4</code>。见到以上图像了吗？</p>
+<p><code>秩（rank）</code>意思是对于一串数字，使用它们的排序号来“替换”它们（第 1 最小的，第 2 最小的，第 3 最小的，……）。因此 <code>rank(c(3.6, 3.4, -5.0, 8.2))</code> 的秩转换结果是 <code>3, 2, 1, 4</code>。注意到以上图像了吗？</p>
 <p>“符号”秩是相同的，除了我们先根据绝对值排序，再添加上符号。所以以上的符号秩是 <code>2, 1, -3, 4</code>。或者用代码表达：</p>
 <pre class="r"><code>signed_rank = function(x) sign(x) * rank(abs(x))</code></pre>
-<p>我希望，我说秩很容易理解的时候，没有得罪任何人；然而，这就是你转换大部分参数检验到它们的对应“非参”检验所要做的所有事情！一个重要的推论是，<em>很多“非参”检验和它们的对应参数检验版本都有一致的参数：均值、标准差、方差齐次性，等等 —- 区别在于它们是在秩转换后的数据上计算的</em>。这是为什么我把“非参”用引号包起来。</p>
+<p>我希望，我说秩很容易理解的时候，没有冒犯到其他人；然而，这就是你转换大部分参数检验到它们的对应“非参”检验所要做的所有事情！一个重要的推论是，<em>很多“非参”检验和它们的对应参数检验版本都有一致的参数：均值、标准差、方差齐次性，等等 —- 区别在于它们是在秩转换后的数据上计算的</em>。这是为什么我把“非参”用引号包起来。</p>
 </div>
 <div id="r-pearson-" class="section level3">
 <h3><span class="header-section-number">3.0.3</span> R 代码：Pearson 相关系数</h3>
@@ -971,7 +971,7 @@ b &lt;- lm(rank(value) ~ 1 + group_y2) # compare to linear model above</code></p
 </div>
 <div id="welch" class="section level2">
 <h2><span class="header-section-number">5.2</span> Welch t 检验</h2>
-<p>这等价于以上（学生）<a href="#t2">独立 t 检验</a>，除了学生 t 检验假设同方差，而 <strong>Welch t 检验</strong> 没有这个假设。所以线性模型是相同的，但是我们对每一个组指定一个方差。我们可用 <code>nlme</code> 包（<a href="https://stats.stackexchange.com/questions/142685/equivalent-to-welchs-t-test-in-gls-framework">查阅细节</a>）：</p>
+<p>这等价于以上（学生）<a href="#t2">独立 t 检验</a>，除了学生 t 检验假设同方差，而 <strong>Welch t 检验</strong> 没有这个假设。所以线性模型是相同的，区别在于，我们对每一个组指定一个方差。我们可用 <code>nlme</code> 包（<a href="https://stats.stackexchange.com/questions/142685/equivalent-to-welchs-t-test-in-gls-framework">查阅细节</a>）：</p>
 <pre class="r"><code># Built-in
 a &lt;- t.test(y, y2, var.equal = FALSE)
 
@@ -1186,7 +1186,7 @@ c &lt;- car::Anova(aov(rank(value) ~ group, D)) </code></pre>
 <h2><span class="header-section-number">6.2</span> 双因素方差分析（two-way ANOVA）（待绘图）</h2>
 <div id="section-11" class="section level3">
 <h3><span class="header-section-number">6.2.1</span> 理论：作为线性模型</h3>
-<p>模型：每组一个均值（主效应）加上这些均值乘以各个因子（交互效应）。尽管在一个更大的模型框架里，实际上主效应就是上述<a href="#anova1">单因素方差分析</a>模型。即使交互效应只是一些数字乘以另外一些识数字，但是它更难抽象地解释。我会把这些解释内容留给其他教师，而聚焦在等价表达之上。 :-)</p>
+<p>模型：每组一个均值（主效应）加上这些均值乘以各个因子（交互效应）。尽管在一个更大的模型框架里，实际上主效应就是上述<a href="#anova1">单因素方差分析</a>模型。即使交互效应只是一些数字乘以另外一些识数字，但是它更难抽象地解释。我会把这些解释内容留给课堂上的老师们，而聚焦在等价表达之上。 :-)</p>
 <p>使用矩阵记号：</p>
 <p><span class="math inline">\(y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_1 X_2 \qquad \mathcal{H}_0: \beta_3 = 0\)</span></p>
 <p>这里 <span class="math inline">\(\beta_i\)</span> 是 beta 的向量，其中之后一个会被示性向量 <span class="math inline">\(X_i\)</span> 所选取。这里出现的<span class="math inline">\(\mathcal{H}_0\)</span> 是交互效应。注意，截距是 <span class="math inline">\(\beta_0\)</span> 是所有因子中第一个水平的均值，而其它所有的 <span class="math inline">\(\beta\)</span> 都是相对于 <span class="math inline">\(\beta_0\)</span> 的值。</p>
@@ -1665,7 +1665,7 @@ d &lt;- MASS::loglm(Freq ~ mood + sex, D)</code></pre>
 <ol style="list-style-type: decimal">
 <li><p>我没在这里覆盖到前提假设的内容。这会在另一篇文章揭晓！但是所有检验都很可能有三个预定假设：a) 数据点的独立性，b) 残差的正态分布性质，c) 同方差性（homoscedasticity）。</p></li>
 <li><p>我假定所有的零假设是缺失了效应的情况，但是所有原理都和非 0 的零假设所一致的。</p></li>
-<li><p>我没有讨论推断内容。因为大家都会关心 p 值，因此我在比较中只提到了 p 值，从而简短地展示了背后的模型的等价性。参数的估计值也会展示出相同的等价性。如何进行<em>推断</em>则是另一个话题了。我个人是贝叶斯学派的，但是在这里展示贝叶斯学派内容的话，会减少潜在的观众。此外，建造<a href="https://en.wikipedia.org/wiki/Robust_statistics">稳健模型</a>是更好的选择，但是它无法揭示模型的等价性。</p></li>
+<li><p>我没有讨论推断内容。因为大家都会关心 p 值，因此我在比较中只提到了 p 值，从而简短地展示了背后的模型的等价性。参数的估计值也会展示出相同的等价性。如何进行<em>推断</em>则是另一个话题了。我个人是贝叶斯学派的，但是展示贝叶斯学派内容的话，会减少这篇文章的受众。此外，建造<a href="https://en.wikipedia.org/wiki/Robust_statistics">稳健模型</a>是更好的选择，但是它无法揭示模型的等价性。</p></li>
 <li><p>本文列表依然缺失了很多其它有名称的检验，有可能在以后添加进来。比如说符号检验（sign test）（要求很大的 N 从而可以有效地使用线性模型来近似），Friedman 检验 – 即在 <code>rank(y)</code> 上的 RM-ANOVA，McNemar 检验，和二项（Binomial）/多项（Multinomial）检验。在<a href="#links">链接一节</a>可查阅更多的等价模型。如果你认为它们需要在本文提及到，欢迎在本文档的 <a href="https://github.com/lindeloev/tests-as-linear/">github repo</a> 提交对应说明！</p></li>
 </ol>
 <!--
