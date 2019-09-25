@@ -146,6 +146,16 @@
       grid-column: 4/5;
     }
   </style>
+
+  <script>
+    MathJax = {
+      tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
+      svg: {fontCache: 'global'}
+    };
+  </script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
 </head>
 
 <body>
@@ -275,8 +285,8 @@
       G2*S2+G3*S3+...+Gn*Sk, family=...)<sup>A</sup></code></div>
       <div class="box">✓</div>
       <div class="box">交互项：（和双因素方差分析一致）<br><span class='note'>注意：使用以下参数运行 glm
-          函数：<code>glm(model, family=poisson())</code>。<br>对于线性模型，卡方检验是log(y_i) = log(N) + log(alpha_i) + log(beta_i) +
-          log(alpha_i beta_i)，<br>其中 alpha_i 和 beta_i 是比率。建议查阅配套笔记获得更多信息。</span></div>
+          函数：<code>glm(model, family=poisson())</code>。<br>对于线性模型，卡方检验是 $log(y_i) = log(N) + log(\alpha_i) + log(\beta_i) +
+          log(\alpha_i \beta_i)$，<br>其中 $\alpha_i$ 和 $\beta_i$ 是比率。建议查阅配套笔记获得更多信息。</span></div>
       <div class="box">和双因素方差分析一致</div>
     </div>
 
